@@ -1,0 +1,112 @@
+---
+title: "How to install Kali Linux on android?"
+date: "2023-11-19"
+tags: ["how to install kali linux on android", "kali linux", "linux on android", "kali linux on phone", "rootless kali linux for android", "kali liunx for android"]
+image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiAv619Uv73bJm8IdIn0Kq2ujJlsIrgya5eYZuCmFAQBiAE4YtV1OXw0tD2LKUiv1qm5-s0XP4eJuoC3NwGoy7SoteaIs6z5_B7q59u9RYe7ZRpZ0sDhpeGANuIC-ijBydka6Tf9MN_qtfJPliSH5yIHGAbp4IMsA20v4UdSdgOt2YhHuY1cZRn4_oES9M/w640-h358/install%20Kali%20linux.png"
+link: "/how-to-install-kali-linux-on-android"
+description: "We are going to install kali linux on our Android phone without any err and we will install firefox browser on installed linux for browsing."
+---
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/XM5eCDJstII?si=EOFQEcYRLpouf5oS" title="YouTube video player" frameBorder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+
+#### [Step 1 » Install Termux on Your Phone 🡥](posts/how-to-install-termux)
+#### Step 2 » Initial Setup
+This is the initial setup you have to do first to install Kali Linux.
+
+```shell
+pkg update && pkg upgrade
+```
+Here you can get some commands from here🡥 Or copy directly from here:
+
+```shell
+termux-setup-storage && pkg install wget && wget -O install-nethunter-termux https: offs.ec/2MceZWr && chmod +x install-nethunter-termux
+```
+#### Step 3 » Install Nethunter Termux
+
+```shell
+./install-nethunter-termux
+```
+Or,
+
+```shell
+bash install-nethunter-termux
+```
+*During installation, you will see this option. Here you can go through nano, type 3 for it.
+
+```shell
+nano >> 3
+```
+
+#### Step 4 » Get Storage Access
+If you want to access your storage in Linux, follow this:
+
+```shell
+termux-setup-storage && nano $PREFIX/bin/nh
+```
+Or,
+
+```shell
+bash install-nethunter-termux
+```
+And write this `-b /sdcard \`
+
+![Step 1](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiyJNsGtguhDHMNcbyrqE7gQJo6-qNC_iX732U2_J2xIyh0ZjuC2BYmHV1W7BXO2MYVic5ADSLlY7WaWAVVGXbORwF_n2rOJTkIPRbHORhga56CoC9BJBZ5L3Tbp1grmbPV7KDq9TI5E_UQbxSR8Fb3LW79v0OP-xMDytogbF5e1qH_ikwt-ucIneuRrVU/w640-h320/linux1.png)
+
+#### Step 5 » Start Nethunter Server
+```shell
+ nh && sudo apt update
+ ```
+Password >> `kali`
+
+Start the Nethunter server and update the packages there. You will get an internet error because the Nethunter server is unable to access your smartphone internet, so let's solve it.
+
+ ###### => Solve Internet Error
+```shell
+nano /etc/resolv.conf
+```
+Remove all from there and write this and SAVE that (`ctrl + x + y and enter`):-
+```shell
+nameserver 8.8.8.8 nameserver 8.8.4.4
+```
+![step 5](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjQKFqYULoxf8uiNnQyl4HUTSLIxZwgcu96TpGHGDHYHDvsd3n8pLCsdEUgJylbdV9pGUcqDqdPS99rUaIEiANqkivAD1O2RmsFEg8KCOZpgQ7TgkyV-GLCHgSnoWXGUQthUZKKiE6HRroHVHwDJ0xtKQywNkovBv0xweWrbId8X3NfEzSCRhPtxUd4h1o/w640-h320/linux2.png)
+
+#### Step 6 » Now Let's Run Linux
+Update and install VNC server to run our Kali Linux on VNC server:
+
+```shell
+sudo apt update && sudo apt install kali-desktop-xfce dbus-x11 tigervnc-standalone-server -y
+```
+
+=>  Make some changes in VNC server:
+
+```shell
+nano .vnc/xstartup
+```
+=> Write this on any place ⇊⇊:
+
+```shell
+#!/bin/bash dbus-launch startxfce4
+```
+![step 6](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgblL-g81YDoTvVexOIAHDsKYY_47eEiZ_4GJoAwl8WeORzy0aw3i7axiVEUHSdKGukhO-ffpIsWqRbQylqNBfZ37alx6pCBfp2Sv8ojMncsNNZz2L7HrudgcHyEI1JUSglvUv4YYB47dMRlmxXxsJd0pvEuKiUEf3fNDunDZsp2gFRHR1uBHcwNUJ_rVg/w640-h320/linux3.png)
+
+=> Run this:
+
+```shell 
+chmod +x .vnc/xstartup
+```
+Now start the VNC server to run Kali Linux on Android.
+
+```shell
+kex
+```
+Set your password `for example => 123456`. Once it's done, it means your VNC server is running on `localhost:1` , and your Kali Linux is running on the VNC server. You have to install a VNC viewer App [Install App 🡥](/posts/how-to-install-vnc-viewer-for-android). Now you can access your Kali Linux. I am giving you a direct link to install the VNC viewer app. It may not be the latest version, but it's a stable version that will work on any Android phone. [Install Now 🡥](/posts/how-to-install-vnc-viewer-app).
+
+![preview](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhfK_0TmTINx7FXkYGwIJcnrMdBJ0ptTs9wdCxie-uVq_HY352eT0UXnNYPsMLBhSAE5F_liBFcseyTj1sYWBIbTjdh1PLmVZXOU7IxDEKEjzbdABuBCcOEeYU6eNGLvw5GeZmgn5dcCPUdyLYg1Ky8O_9gSQe1De9nXuzVoKL7qYP0N2OQefq1ysPhK_M/w640-h320/linux5.png)
+
+Now open vnc viewer and click on `+` button and give 
+Address in our case linux is running on `localhost:1` and then give name you want `exp: Kali Linux`. In Last create it and connect it while connecting to the Kali Linux you might be asked for password so give the password whatever you set my password is `123456` after giving password you are going to connect with **kali linux**. 
+
+ #### => this is our final pic. 
+
+![last](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh39s1LbheHS3go7DACYN3qJowm-WY0Vt1pbI8XXwPiOgQQADrSN5LNYCTRS27bjVXzMYZRIU8kf7XA12l8dqEosa0VLxvD4zJrPsRhx2vTpB05VzlelHkeuxphNU20bKPOvd6gNIuJWy8zSblgQf4jrIWuF_1EYMCNcdJXCGZHkNAh23Q1kXf3EQ2eWlE/w640-h320/IMG-20231126-WA0004.jpg)
+  

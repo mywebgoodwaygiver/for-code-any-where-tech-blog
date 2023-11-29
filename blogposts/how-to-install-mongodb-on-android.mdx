@@ -1,0 +1,71 @@
+---
+title: "How to install mongoDB on android?"
+date: '2023-11-15'
+tags: ['how to install mongodb on android','mongodb on android', "install mongodb on phone" , 'mongodb for android']
+image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi5M2rGqs1aj3_LkTZkkiieITdkQEmj4mPwTO8jS86DiwOmiN7CXW7JhPkkc94pP3xTZ8toJVpju0IABU9mNwEC5vEhBhZsLMjMcs1M1TjsxislxUHZ95BC5y1ybK9TdCBvCEkti0gwD3n1BGtnzDWPwoqsByZVa1bwNExjHuvJFjCXUUmQNvM0FEK8OF0/s320/mongodb%20(1).png"
+link: "/how-to-install-mongodb-on-android"
+description: "Due to not having a laptop today we will use mongodb on out android phone. And using this we can learn uses of mongoDB."
+---
+
+Hey there, Android enthusiasts! Ever wondered if you could have MongoDB, a powerful and flexible database, right on your Android phone? Well, wonder no more! We've got a simple step-by-step guide for you to install MongoDB on your Android device. Let's dive in:
+
+
+#### Step 1: Prepare Your Android phone
+
+Ensure your Android phone is connected to a stable Wi-Fi network. This is crucial for a smooth installation process.
+
+#### Step 2: Download Termux App
+
+Head over to the Google Play Store and search for "Termux." Install this handy terminal emulator app on your Android device. It will be your go-to tool for installing MongoDB.
+
+#### Step 3: Open Termux and Update Packages
+
+```bash 
+pkg update && pkg upgrade
+```
+
+
+
+```bash
+pkg install mongodb
+```
+
+
+
+Wait for the installation to complete. This might take a few minutes, depending on your internet speed.
+
+#### Step 5: Start MongoDB Server
+
+Once the installation is done, start the MongoDB server with this command:
+
+```bash
+mongod
+```
+
+
+You've just initiated the MongoDB server on your Android phone!
+
+#### Step 6: Access MongoDB Shell
+
+To interact with MongoDB, open a new Termux window and enter the MongoDB shell:
+
+```bash
+mongo
+```
+
+Congratulations! You are now connected to your MongoDB server on your Android phone.
+
+#### Step 7: Test Your MongoDB Installation
+Create a test database and collection to make sure everything is working:
+
+```Bash
+use testdb
+db.testcollection.insert({ message: "Hello, MongoDB on Android!" })
+db.testcollection.find()
+```
+
+If you see the message you inserted, congratulations! MongoDB is up and running on your Android device.
+
+There you have it – MongoDB on your Android phone! Feel free to explore the vast world of MongoDB databases right from your pocket. Happy coding! 🚀.
+
+

@@ -1,0 +1,191 @@
+/* Tailwind CSS */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap");
+
+/* Global Styles */
+* {
+  font-family: "Ubuntu", sans-serif !important;
+}
+
+/* Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 5px;
+  color: #ff00ff;
+  background-color: #ff7f00;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(255, 244, 244);
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 120px;
+  background: gray;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(17, 0, 255);
+  color: #ff00ff;
+}
+/* /// */
+
+.socel-media-icons {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+code:not(pre code) {
+  background: #f7f7f7;
+  border: 1px solid #ededed;
+  border-radius: 7px !important;
+}
+
+iframe {
+  display: block;
+  margin: auto;
+}
+
+.mainPostContainer a {
+  color: #38bdf8 !important;
+}
+
+/* Dark Mode Scrollbar Styles */
+@media (prefers-color-scheme: dark) {
+  ::-webkit-scrollbar-track {
+    background: rgb(0, 0, 0);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #555;
+  }
+
+  code:not(pre code) {
+    background: #2a2828;
+    border: 1px solid #3e3c3c;
+    border-radius: 7px !important;
+  }
+}
+
+/* Code Block Styles */
+pre {
+  padding: 16px !important;
+  margin: 0 !important;
+  font-weight: bold !important;
+  filter: drop-shadow(0 1px 1px rgb(0 0 0 / 0.05)) !important;
+  margin: 16px 0px !important;
+}
+
+pre:hover {
+  filter: drop-shadow(0 0 0.75rem crimson) !important;
+}
+
+pre code {
+  color: aliceblue !important;
+}
+
+/* Article Content Styles */
+.myPostContentInArticle p {
+  color: #414040 !important;
+  font-size: 20px !important;
+}
+
+.myPostContentInArticle img {
+  display: block !important;
+  margin: auto !important;
+  border-radius: 8px !important;
+  cursor: pointer;
+}
+
+/* Dark Mode Article Content Styles */
+@media (prefers-color-scheme: dark) {
+  .myPostContentInArticle h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: ghostwhite !important;
+    font-weight: 700 !important;
+    line-height: 1 !important;
+  }
+
+  .myPostContentInArticle p {
+    color: #cbd5e1 !important;
+    font-size: 20px !important;
+  }
+}
+
+/* Responsive Styles */
+@media (max-width: 420px) {
+  .highlightsMainDiv .highlights {
+    display: flex;
+    flex-direction: column;
+  }
+  .highlights .contants {
+    width: 100% !important;
+  }
+}
+
+/* max-width=500px */
+@media (0px <= width <=500px) {
+  .mainContentsPost {
+    padding: 0px !important;
+  }
+
+  .mainContentsPost .mytitle {
+    font-size: 14px !important;
+  }
+
+  .mainContentsPost .mydescription {
+    font-size: 13px !important;
+  }
+  .highlights img {
+    width: 5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .myPostContentInArticle p {
+    font-size: 16px !important;
+  }
+}
+
+@media (0px <= width <=768px) {
+  .highlights {
+    font-size: 13px;
+  }
+}
+
+@media (min-width: 500px) {
+  .myPostContentInArticle img {
+    width: 500px !important;
+  }
+}
+
+@media (min-width: 640px) {
+  .myPostContentInArticle img {
+    width: 500px !important;
+  }
+
+  .myPostContentInArticle p {
+    font-size: 18px !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .myPostContentInArticle p {
+    font-size: 20px !important;
+  }
+}
+
+/* Additional Media Queries for Larger Screens */
+@media (min-width: 1024px) {
+}
+
+@media (min-width: 1280px) {
+}

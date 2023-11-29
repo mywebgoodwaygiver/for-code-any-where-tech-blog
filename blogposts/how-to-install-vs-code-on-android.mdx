@@ -1,0 +1,88 @@
+---
+title: "How to install VS Code on android?"
+date: '2023-11-15'
+tags: ['how to install vs code on android', "Android" , "Installation",'vs code on android', "install vs code on phone" , 'vs code for android']
+image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi5M2rGqs1aj3_LkTZkkiieITdkQEmj4mPwTO8jS86DiwOmiN7CXW7JhPkkc94pP3xTZ8toJVpju0IABU9mNwEC5vEhBhZsLMjMcs1M1TjsxislxUHZ95BC5y1ybK9TdCBvCEkti0gwD3n1BGtnzDWPwoqsByZVa1bwNExjHuvJFjCXUUmQNvM0FEK8OF0/s320/vs code%20(1).png"
+link: "/how-to-install-vs-code-on-android"
+description: "We have all done by installing termux and so on but today to edit code and learn code we will install very popular code editor vs code."
+---
+
+
+ #### Using `VS Code` on Your Phone: A Step-by-Step Guide.
+
+In today's post, we will explore how to use Visual Studio Code `VS Code` on your smartphone. While VS Code is typically designed for laptops and computers, with a few simple steps, you can enjoy coding on your phone. Follow this step-by-step guide using simple language and easy-to-follow instructions.
+
+Prerequisites
+-------------
+
+Before we begin, ensure you have the following:
+
+*   A smartphone
+*   An internet connection
+*   A willingness to explore and learn
+
+Step 1: Install Termux
+----------------------
+
+1.  **Introduction to Termux**: Termux is a terminal emulator for Android that allows you to run Linux applications on your device.
+    
+2.  **Finding Termux**: Open your browser and search on YouTube for "how to install Termux on phone." Watch a tutorial video to guide you through the installation process.
+    
+3.  **Download Termux**: Following the video instructions, download and install Termux on your phone.
+    
+
+Step 2: Setting Up Code Server
+------------------------------
+
+1.  **Open Termux**: Launch Termux on your phone.
+    
+2.  **Run Commands**: In the Termux terminal, enter the following three commands:
+    
+    ``` shell
+    pkg install tur-repo
+    ```
+    ``` shell
+    pkg install tur-repo
+    ```
+    
+3.  **Download Code Server**: After running the commands, you will be able to download Code Server. Follow the instructions in the video for this step.
+    
+
+Step 3: Accessing VS Code
+-------------------------
+
+1.  **Start Code Server**: Open Code Server by typing the command:
+    
+    ```shell
+    code-server
+    ```
+    
+2.  **Accessing VS Code in Browser**: Open your browser and navigate to `localhost:8080`.
+    
+3.  **Set a Password**: Copy the provided text on the `localhost:8080` page or Copy this => `nano ~/.config/code-server/config.yaml`, open a new section in Termux, paste the text, and hit enter. This will give you a password. You can also change this `Password` .
+
+![password pic](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjkFhoOqaoMnpSzjtKdIXYyQw6-V3jUeoYVuoFQ4ZblW_y1AfIYI-KZTfjrtO5Bjcq50_02CEbF66KjSXS8Ghvp-raBnbLcV5q1tGmcU6oyglfhTIb9UmcYJdg4EVUh_yV0qNC4IMFp5r4Z_swX9rLj8zVs-qwUF5haF5eF50tG4avQZG8p8LdNqGknAWQ/w640-h320/Termux_install_vscode2.png)    
+
+4.  **Login to Code Server**: Paste the password in the Code Server login page `localhost:8080` and click on submit to access VS Code on your phone.
+    
+     > ##### login without Password
+     Simple run this => `code-server --auth none`
+
+
+Step 4: Editing Code
+--------------------
+
+1.  **Open a Folder**: Click on "Open Folder" to access your files.
+    
+2.  **Create and Edit Files**: Explore your files, create new ones, and edit existing ones directly in VS Code on your phone.
+    
+3.  **Limitation Alert**: Note After installing some extensions might not be there because it does not support it but there are some ways to install extensions you can use that for installing the `extensions`.
+
+![folders](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjZBE_ykWdLVqwJBu2EHl1lkYqRrMFw3zI6Dvo4kP4QNe_0NZEwqOCSvLv_EYMp8gZLCcPlpSLj8UxuEv7y5O2sJzdRfqo-Wy12RNi4Lg_wPaMpR-5DmtShnmBZrQ2f9bxyBZ3ZMgrgBbNtC7z84gFBJjdzDIiW4Ybz5J8sU4n-IZyOQtg6hbQxveC_8pQ/w640-h320/termux%20vscode%203.png)    
+
+Conclusion
+----------
+
+Congratulations! You've successfully set up and accessed VS Code on your phone using Termux and Code Server. For solving the issue of installing more extensions, check out the next video linked in the description.
+
+**Happy coding and Thanks 🚀.**

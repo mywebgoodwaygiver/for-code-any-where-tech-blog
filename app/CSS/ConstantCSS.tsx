@@ -1,0 +1,1 @@
+export const postImgCSS = "w-full h-auto max-w-xl rounded-lg block mx-auto"
