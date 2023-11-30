@@ -2,11 +2,11 @@ type Meta = {
     id: string,
     title: string,
     date: string,
-    modified:string,
     tags: string[],
     image: string,
     link: string,
-    description:string;
+    description:string,
+    // modified:string,
 }
 
 type BlogPost = {

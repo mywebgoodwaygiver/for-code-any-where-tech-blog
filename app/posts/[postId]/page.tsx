@@ -46,7 +46,7 @@ const {meta} = post;
     type: 'article',
     siteName: "Dave Gray's Blog",
     publishedTime: new Date(meta.date).toISOString(),
-    modifiedTime: new Date(meta.modified).toISOString(),
+    // modifiedTime: new Date(meta.modified).toISOString(),
     authors: ['Dave Gray'],
     images: [
         {

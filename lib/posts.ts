@@ -34,7 +34,7 @@ export async function getPostByName(
       image: string;
       link: string;
       description: string;
-      modified: string;
+    //   modified: string;
     }>({
       source: rawMDX,
       options: {
@@ -61,7 +61,7 @@ export async function getPostByName(
         image: frontmatter.image,
         link: frontmatter.link,
         description: frontmatter.description,
-        modified: frontmatter.modified,
+        // modified: frontmatter.modified,
       },
       content,
     };
