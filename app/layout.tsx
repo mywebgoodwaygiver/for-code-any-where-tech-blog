@@ -4,22 +4,43 @@ import MyNavbar from "./components/MyNavbar";
 import Footer from "./components/Footer";
 import NextTopLoader from "nextjs-toploader";
 import { Metadata } from "next/types";
+import Head from "next/head";
 
 export const metadata: Metadata = {
   title: {
-    template: '%s | Shivam Kumar',
-    default: "Shivam - Good Way Giver",
+    template: "%s | Good Way Giver",
+    default: "Good Way Giver",
   },
-  description: "Hello, I'm Shivam. 👋 I am a coder and know web development skills.",
+  description:
+    "Hello, I'm Shivam. 👋 I am a coder and know web development skills.",
   applicationName: "Good Way Giver Blog",
   authors: [{ name: "Shivam Kumar" }],
-  generator: 'Next.js',
-  keywords: ['Good Way Giver', "Shivam Kumar's Blog", 'How to', "Good Way Giver's Blog", 'vs code install on phone', 'Good Way Giver Tech', 'Good Way Giver Post', 'Shivam Kumar Post', 'Tech Blog',],
-  referrer: 'origin-when-cross-origin',
-  creator: 'Shivam Kumar',
-  publisher: 'Shivam Kumar',
-}
-
+  generator: "Next.js",
+  keywords: [
+    "Good Way Giver",
+    "Shivam Kumar's Blog",
+    "How to",
+    "Good Way Giver's Blog",
+    "vs code install on phone",
+    "Good Way Giver Tech",
+    "Good Way Giver Post",
+    "Shivam Kumar Post",
+    "Tech Blog",
+  ],
+  referrer: "origin-when-cross-origin",
+  creator: "Shivam Kumar",
+  publisher: "Shivam Kumar",
+  icons: {
+    icon: ["/favicon.ico?v=4"],
+    apple: ["/apple-touch-icon.png?v=4"],
+    shortcut: ["apple-touch-icon.png"],
+  },
+  manifest: "/site.webmanifest",
+  metadataBase: new URL("https://www.goodwaygiver.site/"),
+  verification:{
+    google:"id"
+  }
+};
 
 export default function RootLayout({
   children,
@@ -28,11 +49,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
-        <meta charSet="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Good Way Giver</title>
-      </head>
+      <Head>
+        <link rel="preload" href="./globals.css" as="style" />
+      </Head>
       <body className="dark:bg-slate-800">
         <ContextProvider>
           <MyNavbar />
@@ -40,7 +59,7 @@ export default function RootLayout({
             color="#2299DD"
             initialPosition={0.08}
             crawlSpeed={200}
-            height={3}
+            height={6}
             crawl={true}
             showSpinner={false}
             easing="ease"

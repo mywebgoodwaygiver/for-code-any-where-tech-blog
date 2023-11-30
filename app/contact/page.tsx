@@ -42,7 +42,22 @@ const ContactPage = () => {
 
     setSending(true);
 
-    const data = await sendEmail(mailOptions);
+    const response = await sendEmail(mailOptions);
+    let data: any;
+
+    if (typeof response === "string") {
+      // Handle the case where there is an error (response is a string)
+      console.error("Error:", response);
+    } else {
+      // Handle the case where the request was successful (response is an AxiosResponse)
+      data = response.data;
+    }
+
+    // Now you can use 'data' without TypeScript errors
+    console.log(data);
+         
+
+
     if (data.status === 200) {
       setSent(true);
     }

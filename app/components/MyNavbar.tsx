@@ -3,6 +3,7 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import {
   postdata,
   mySearchInput,
@@ -17,7 +18,6 @@ import {
   getPopularPostFunc,
   getPostsFunc,
 } from "../apiCalls/Apis";
-import { checkUrl } from "../ContantComponents/UrlNow";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import { FaSearch } from "react-icons/fa";
 
@@ -50,9 +50,9 @@ function MyNavbar(props: Props) {
     }
   };
 
-  const handlesetUrl = (url:string) => {
+  const handlesetUrl = (url: string) => {
     // Your logic here
-    console.log('Link clicked',url);
+    console.log("Link clicked", url);
   };
   console.log("urlNow :", urlNow);
   const changeInpValue = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -85,8 +85,19 @@ function MyNavbar(props: Props) {
     setShowSpin(true);
 
     const response = await getPostsFunc(searchInput);
-    console.log("i am after data ok");
-    setPostData(response.data.postdata);
+    let data: any;
+
+    if (typeof response === "string") {
+      // Handle the case where there is an error (response is a string)
+      console.error("Error:", response);
+    } else {
+      // Handle the case where the request was successful (response is an AxiosResponse)
+      data = response.data;
+    }
+
+    // Now you can use 'data' without TypeScript errors
+    console.log("data.postdata: ", data.postdata);
+    setPostData(data.postdata);
     setShowSpin(false);
   };
 
@@ -107,12 +118,35 @@ function MyNavbar(props: Props) {
 
   const getLatestPost = async () => {
     const response = await getLatestPostFunc();
-    const data = await response.data;
+    let data: any;
+
+    if (typeof response === "string") {
+      // Handle the case where there is an error (response is a string)
+      console.error("Error:", response);
+    } else {
+      // Handle the case where the request was successful (response is an AxiosResponse)
+      data = response.data;
+    }
+
+    // Now you can use 'data' without TypeScript errors
+    console.log(data);
     setLatestPostData(data);
   };
   const getPopularPost = async () => {
     const response = await getPopularPostFunc();
-    const data = await response.data;
+
+    let data: any;
+
+    if (typeof response === "string") {
+      // Handle the case where there is an error (response is a string)
+      console.error("Error:", response);
+    } else {
+      // Handle the case where the request was successful (response is an AxiosResponse)
+      data = response.data;
+    }
+
+    // Now you can use 'data' without TypeScript errors
+    console.log(data);
     setPopularPostData(data);
   };
 
@@ -132,13 +166,9 @@ function MyNavbar(props: Props) {
   useEffect(() => {
     getLatestPost();
     getPopularPost();
-  }, []);
-
-  //
-
-  useEffect(() => {
     focusInput();
   }, []);
+
 
   return (
     <>
@@ -148,7 +178,11 @@ function MyNavbar(props: Props) {
             <nav className="flex shadow-lg z-30 justify-between fixed top-0 bg-gray-50  dark:bg-gray-900 dark:shadow-blue-300 dark:shadow-sm items-center w-[100%] mx-auto px-1 py-3 ">
               <div>
                 <Link href="/" className="flex items-center">
-                  <img
+                  <Image
+ width={40}
+ height={40}
+
+ 
                     src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg3XnABTUt4Qc9bJpf67KlHp0T06Tc4UuwbFeNBOs95cQ5CaoWitFztCbjNXMkqbQGig4QpEqZMJlNh8cDvkll7n7M_9km8jZRCZbWEcxIAM98aWZ-aCkEr0NprFxi9kKoTpFYZt_ghD5rSf_QvUl-f3fSWuErxi81MLrTcqQyT2OFmYMtTHMPQJ_8FzRo/w640-h640/Copy%20of%20GWG%20(192%20x%20192%20px).png"
                     className="h-10 mr-1 rounded-full"
                     alt="GoodWayGiver Logo"
@@ -166,17 +200,10 @@ function MyNavbar(props: Props) {
                 } md:w-auto flex w-full items-center `}
               >
                 <ul className="flex md:flex-row flex-col items-start md:items-center text-bold lg:gap-[3.5vw] gap-4  ">
-                <div role="tablist" className="tabs tabs-bordered">
-  <input type="radio" name="my_tabs_1" role="tab" className="tab" aria-label="Tab 1" />
-  <div role="tabpanel" className="tab-content p-10">Tab content 1</div>
-
-  <input type="radio" name="my_tabs_1" role="tab" className="tab" aria-label="Tab 2" checked />
-  <div role="tabpanel" className="tab-content p-10">Tab content 2</div>
-
-  <input type="radio" name="my_tabs_1" role="tab" className="tab" aria-label="Tab 3" />
-  <div role="tabpanel" className="tab-content p-10">Tab content 3</div>
-</div>
-                  <li className="font-semibold text-lg" onClick={()=>handlesetUrl("home")}>
+                  <li
+                    className="font-semibold text-lg"
+                    onClick={() => handlesetUrl("home")}
+                  >
                     <Link
                       href={"/"}
                       className={`block  ${
@@ -184,12 +211,15 @@ function MyNavbar(props: Props) {
                           ? "text-blue-700 dark:text-white underline underline-offset-8"
                           : "text-black"
                       }   dark:hover:text-white dark:text-gray-400 hover:text-blue-500 hover:underline hover:underline-offset-8`}
-                      onClick={()=>handlesetUrl("home")}
+                      onClick={() => handlesetUrl("home")}
                     >
                       Home
                     </Link>
                   </li>
-                  <li className="font-semibold text-lg" onClick={()=>handlesetUrl("about")} >
+                  <li
+                    className="font-semibold text-lg"
+                    onClick={() => handlesetUrl("about")}
+                  >
                     <Link
                       href={"/about"}
                       className={`block  ${
@@ -201,7 +231,10 @@ function MyNavbar(props: Props) {
                       About
                     </Link>
                   </li>
-                  <li className="font-semibold text-lg"       onClick={()=>handlesetUrl("services")} >
+                  <li
+                    className="font-semibold text-lg"
+                    onClick={() => handlesetUrl("services")}
+                  >
                     <Link
                       href={"/services"}
                       className={`block  ${

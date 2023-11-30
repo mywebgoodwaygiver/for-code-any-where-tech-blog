@@ -1,6 +1,16 @@
+
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-    siteUrl: process.env.SITE_URL || 'https://your-domain.com',
+    siteUrl: 'https://www.goodwaygiver.site/',
+    exclude: ['/apple-touch-icon.png','/favicon.ico', '/manifest.webmanifest', '/tags/*'],
     generateRobotsTxt: true,
     generateIndexSitemap: false,
+    robotsTxtOptions: {
+        policies: [
+            {
+                userAgent: '*',
+                allow: '/',
+            }
+        ]
+    }
 }

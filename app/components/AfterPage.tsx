@@ -1,9 +1,10 @@
-'use client'
+"use client";
 
 import React, { useContext } from "react";
 import { latestPost, popularPost } from "./context/ContextProvider";
 import Link from "next/link";
 import Spinner from "../ContantComponents/Spinner";
+import Image from "next/image";
 
 const AfterPage: React.FC = () => {
   const { latestPostData } = useContext(latestPost)!;
@@ -21,10 +22,12 @@ const AfterPage: React.FC = () => {
               <h3 className="font-bold  border-b-2 border-dashed border-pink-500 text-2xl text-start block pl-2 pb-1">
                 Latest
               </h3>
-              <img
+              <Image
+                width={32}
+                height={32}
                 className="h-8 w-8 ml-2 dark:filter dark:invert"
                 src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhlh9PF0i_UKcoE9U8SWHNG7CX2BhNeoLXmeIa-ACRdKv4VRGfgwri13zzQ4qf8XLce6TyEMX5C6A74F3JoxcQPwJcxRB_9sDZlztXBRR1e1MuUdmLGiw4CzE8_KsRu824nYp1R5Wr0teLnBGR5OIO-A-CUi3J6hWxKGxv5x7JdD2iSj9qlV6_zysZHBhA/w400-h400/latesticon.png"
-                alt="new"
+                alt="new img"
               />
             </div>
             {!latestPostData.length ? (
@@ -34,8 +37,10 @@ const AfterPage: React.FC = () => {
                 {latestPostData.map((post) => (
                   <Link href={`/posts${post.link}`} key={post._id}>
                     <div className=" flex my-2 hover:scale-105 hover:border-2 duration-300 transition-transform hover:border-blue-400 rounded-md shadow-lg">
-                    {/* hover:shadow-lg  hover:scale-105 duration-300 transition-transform hover:border hover:border-1.5 hover:border-blue-300 items-center flex flex-col bg-gray-50 rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700 */}
-                      <img
+                      {/* hover:shadow-lg  hover:scale-105 duration-300 transition-transform hover:border hover:border-1.5 hover:border-blue-300 items-center flex flex-col bg-gray-50 rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700 */}
+                      <Image
+                        width={142}
+                        height={80}
                         className=" latestCotainerImage h-20 border-2 border-black rounded-sm"
                         src={`${post.thumbnail}`}
                         alt=""
@@ -81,10 +86,12 @@ const AfterPage: React.FC = () => {
               <h3 className="font-bold  border-b-2 border-dashed border-lime-500 text-2xl text-start block pl-2 pb-1">
                 Popular
               </h3>
-              <img
+              <Image
+                width={32}
+                height={32}
                 className="h-8 w-8 ml-2 dark:filter dark:invert"
                 src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgocEYbDmzkXPOlV29vgpn4ORGtpIQAIDuNd0jo6C_DWlflju-monJC7rRyKeJnGRCXxV3aaS4Tpec0OEST2b5DOdLcvrGU_pLS01UYeQ_o0QJT6V-WE_u6AFbF_z3lfpdyYJ1E8vet06S2LSTHaA79LmO2bQN2U6Jd3hYlHTgYv5vsuOHoJDSoiqCXGC0/w400-h400/popularicon.png"
-                alt=""
+                alt="popular img"
               />
             </div>
             {!popularPostData.length ? (
@@ -94,7 +101,9 @@ const AfterPage: React.FC = () => {
                 {popularPostData.map((post) => (
                   <Link href={`/post${post.link}`} key={post._id}>
                     <div className=" flex my-2 hover:scale-105 hover:border-2 hover:border-blue-400 rounded-md shadow-lg">
-                      <img
+                      <Image
+                        width={142}
+                        height={80}
                         className="h-20 border-2 border-black rounded-sm"
                         src={`${post.thumbnail}`}
                         alt=""

@@ -49,7 +49,7 @@ export default function MyTagPosts({ props: { tags } }: Props) {
   
       // Call the fetchPosts function
       fetchPosts();
-    }, [tags]); // Include tags in the dependency array to re-run the effect when tags change
+    }, [tags , setMyTagPostsHook]); // Include tags in the dependency array to re-run the effect when tags change
   
   return (
     <>

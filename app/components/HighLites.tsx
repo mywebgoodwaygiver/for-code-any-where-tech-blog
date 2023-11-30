@@ -2,7 +2,7 @@
 
 import React from "react";
 import Typewriter from "./Typewriter";
-
+import Image from 'next/image';
 const HighLites = () => {
  const words:string[] = ["Good Way Giver", "Good Way Giver Shop"]
 
@@ -10,7 +10,11 @@ const HighLites = () => {
   return (
     <>
       <div className="highlights mb-2  md:mt-[24px] py-2 text-center  flex justify-center items-center dark:bg-gray-900 dark:text-white dark:border dark:border-white dark:rounded-sm">
-              <img
+              <Image
+ width={650}
+ height={650}
+
+ 
           className=" logoimg rounded-full w-[8rem] m-[9px] md:w-52"
           src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhbquYFtQINQQt3iga7xmwBxMtuG_HMVMEiEVai00VSXCIlslyWBwnPOIwtSsqFHjlVljGVIhvIsDn4_44Rix8-oU9EaW48LbnVi-kQLbbYx4K_ciiaV09XXCEhHMjK0BIG-xK6-tGHHUx3GCa3EEhA7T5UvMd_BawTHAiH952VyQidThDOP-uvQAaLijQ/s320/logogif.gif"
           alt=""

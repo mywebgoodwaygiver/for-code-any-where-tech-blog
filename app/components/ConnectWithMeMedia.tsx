@@ -3,7 +3,7 @@
 import React from "react";
 import Typewriter from "./Typewriter";
 import Link from "next/link";
-
+import Image from 'next/image';
 const ConnectWithMeMedia: React.FC = () => {
   const words:string[] = ["#YouTube", "#FaceBook", "#Instagram"];
 
@@ -23,7 +23,11 @@ const ConnectWithMeMedia: React.FC = () => {
               <div className="text-center text-gray-500  dark:text-gray-400">
                 <Link target="_blank" href="https://youtube.com/@goodwaygiver" passHref>
             
-                    <img
+                    <Image
+ width={650}
+ height={650}
+
+ 
                       className="mx-auto mb-4 w-12 h-auto rounded-full border border-red-500 p-1"
                       src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgtjm00gGaVKpffquELDG8a7fkQtD4sQu0brKoX0Ui9ianXLfJ4SSmtdDn9E1KB-gYXHrV75Ji5Y-tu6kLiPEiHAZechmKMFEgqZ-z18h2KaB4k5YD2Qz4lrri_W_ufvPodsmHa-M2-CL4Lz_0fC2S84YVdOP7s4O4JjuLF1RDZBbfVwRrW6szC0knixI8/s240/unnamed%20(2).webp"
                       alt="Bonnie Avatar"
@@ -41,7 +45,11 @@ const ConnectWithMeMedia: React.FC = () => {
                   passHref target="_blank"
                 >
                   
-                    <img
+                    <Image
+ width={650}
+ height={650}
+
+ 
                       className="mx-auto mb-4 w-12 h-auto rounded-full border border-blue-300 p-1"
                       src="https://play-lh.googleusercontent.com/LYXR81vaeuI2KIy4xQarox4qAYnrkWnmKOwl1JoLIJuCRUoK9dqPGAAjELsAf1J_qw=w240-h480-rw"
                       alt="Helene Avatar"
@@ -59,7 +67,11 @@ const ConnectWithMeMedia: React.FC = () => {
                   passHref target="_blank"
                 >
                  
-                    <img
+                    <Image
+ width={650}
+ height={650}
+
+ 
                       className="mx-auto mb-4 w-12 h-auto border border-red-500 rounded-full p-1"
                       src="https://play-lh.googleusercontent.com/h9THn4Ou1Qz9_CpTVxtatkF8yZV9YP2T3D6-ZxMvsnV0TbLL_LiVIMmTprcosjq0SPHu=w240-h480-rw"
                       alt="Jese Avatar"

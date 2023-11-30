@@ -1,5 +1,5 @@
 import React from "react";
-
+import Image from 'next/image';
 const ServicesPage = () => {
   return (
     <>
@@ -34,7 +34,11 @@ const ServicesPage = () => {
             </a>
           </div>
           <div className=" flex justify-center lg:mt-0 lg:col-span-5 lg:flex">
-            <img
+            <Image
+ width={650}
+ height={650}
+
+ 
             className="rounded-full"
               src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhbquYFtQINQQt3iga7xmwBxMtuG_HMVMEiEVai00VSXCIlslyWBwnPOIwtSsqFHjlVljGVIhvIsDn4_44Rix8-oU9EaW48LbnVi-kQLbbYx4K_ciiaV09XXCEhHMjK0BIG-xK6-tGHHUx3GCa3EEhA7T5UvMd_BawTHAiH952VyQidThDOP-uvQAaLijQ/s320/logogif.gif"
               alt="GWG Logo"

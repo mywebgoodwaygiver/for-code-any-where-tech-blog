@@ -5,7 +5,7 @@ import MyNavbar from "../components/MyNavbar";
 import HighLites from "../components/HighLites";
 import Latest from "../components/Latest";
 import Popular from "../components/Popular";
-import Footer from "../components/Footer";
+import Image from 'next/image';
 // import Test from "../components/Typewriter";
 import {
 mySearchInput, 
@@ -23,7 +23,11 @@ const HomePage = () => {
       <div style={{ width: "100%" }} className="m-0 p-0">
        
 
-        {/* <img src="/gif/videoforhome.gif" alt="Your GIF"/> */}
+        {/* <Image
+ width={650}
+ height={650}
+
+  src="/gif/videoforhome.gif" alt="Your GIF"/> */}
 
         {/* /// */}
 

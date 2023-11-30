@@ -7,7 +7,7 @@ import Spinner from "../ContantComponents/Spinner";
 import NoSearchResults from "./NoSearchResults";
 import StopPoint from "../ContantComponents/StopPoint";
 import { SlFire } from "react-icons/sl";
-
+import Image from 'next/image';
 const ForSearch: React.FC = () => {
   const { postData } = useContext(postdata)!;
   const { showSpin } = useContext(showSpiner)!;
@@ -19,7 +19,11 @@ const ForSearch: React.FC = () => {
           <h2 className="my-4 px-2.5 inline text-2xl tracking-tight font-extrabold  text-gray-900 dark:text-white">
             Search Results{" "}
           </h2>{" "}
-          <img
+          <Image
+ width={650}
+ height={650}
+
+ 
             className="h-6 w-6 dark:filter dark:invert"
             src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjsEeJRnoySeHJb0vdjra9h3neT5FnmlJabvzW0SMbU-zTwfaAQgtCFfUuaW-0YHbEQZwfuai-Iah1xiNhct3ASNQLn36DHadBgv2weHln_6SPZMOCXwUsMfLSOpC1vaDcD-u4oLx5f5IBI1ZANWT6YrlVZis_EjoClblmOZ_1Sh9nNOHAcxMqZs-UcfXI/w640-h640/result%20success.png"
             alt=""
@@ -40,7 +44,11 @@ const ForSearch: React.FC = () => {
                       className="searchPosts p-3 hover:shadow-lg hover:scale-105 duration-400 transition-transform hover:border hover:border-1.5  hover:border-blue-300 items-center md:flex md:flex-col block xl:flex xl:flex-row   text-start  bg-gray-50 rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700"
                     >
                       <figure className="max-w-md mx-auto  inline-block overflow-hidden">
-                        <img
+                        <Image
+ width={650}
+ height={650}
+
+ 
                           className="h-auto max-w-full rounded-lg  hover:scale-105 duration-300 transition-transform"
                           src={`${post.thumbnail}`}
                           alt="image description"
