@@ -39,25 +39,25 @@ const {meta} = post;
     alternates: {
       canonical: `/posts/${meta.id}`,
   },
-//   openGraph: {
-//     title: meta.title,
-//     description: meta.description,
-//     url: `/posts/${meta.id}`,
-//     type: 'article',
-//     siteName: "Dave Gray's Blog",
-//     publishedTime: new Date(meta.date).toISOString(),
-//     modifiedTime: new Date(meta.modified).toISOString(),
-//     authors: ['Dave Gray'],
-//     images: [
-//         {
-//             url: `${meta.image}`,
-//             secureUrl: `${meta.image}`,
-//             width: 1200,
-//             height: 630,
-//             alt: `Preview image for ${meta.title}`,
-//         }
-//     ],
-// },
+  openGraph: {
+    title: meta.title,
+    description: meta.description,
+    url: `/posts/${meta.id}`,
+    type: 'article',
+    siteName: "Dave Gray's Blog",
+    publishedTime: new Date(meta.date).toISOString(),
+    modifiedTime: new Date(meta.modified).toISOString(),
+    authors: ['Dave Gray'],
+    images: [
+        {
+            url: `${meta.image}`,
+            secureUrl: `${meta.image}`,
+            width: 1200,
+            height: 630,
+            alt: `Preview image for ${meta.title}`,
+        }
+    ],
+},
 twitter: {
     card: 'summary_large_image',
     site: '@goodwaygiver',
