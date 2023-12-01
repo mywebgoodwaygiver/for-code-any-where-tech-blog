@@ -1,10 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { revalidatePath } from 'next/cache'
 
-export const config = {
-    runtime: 'experimental-edge',
-  }
-   // Add this line to specify the runtime
+export const runtime = 'edge'; // Add this line to specify the runtime
 
 export async function GET(request: NextRequest) {
     const secret = request.nextUrl.searchParams.get('secret')
