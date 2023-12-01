@@ -3,24 +3,22 @@ import { compileMDX } from "next-mdx-remote/rsc";
 // import rehypeSlug from "rehype-slug";
 // import rehypePrism from "@mapbox/rehype-prism";
 import path from "path";
-import fs from "fs"
-
-
+import fs from "fs";
 
 const postsDirectory = path.join(process.cwd(), "blogposts");
 
-// ...  
-
+// ...
+export const runtime = "edge";
 
 export async function getPostByName(
   fileName: string
 ): Promise<BlogPost | undefined> {
   try {
     const fullPath = path.join(postsDirectory, fileName);
-    const fileContents = fs.readFileSync(fullPath, "utf8");
+    const fileContents = "hello";
     const rawMDX = fileContents;
 
-    if (rawMDX === "404: Not Found") return undefined;
+    if (!rawMDX) return undefined;
 
     const { frontmatter, content } = await compileMDX<{
       title: string;
@@ -29,7 +27,7 @@ export async function getPostByName(
       image: string;
       link: string;
       description: string;
-    //   modified: string;
+      //   modified: string;
     }>({
       source: rawMDX,
       options: {

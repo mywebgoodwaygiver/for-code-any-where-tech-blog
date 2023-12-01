@@ -12,7 +12,7 @@ type Props = {
     postId: string;
   };
 };
-
+export const runtime = 'edge';
 export async function generateStaticParams() {
   const posts = await getPostsMeta(); //deduped!
 
