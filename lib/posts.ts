@@ -3,7 +3,10 @@ import { compileMDX } from "next-mdx-remote/rsc";
 // import rehypeSlug from "rehype-slug";
 // import rehypePrism from "@mapbox/rehype-prism";
 import path from "path";
-import fs from "fs"
+// import fsPromises from "fsPromises"
+import fsPromises from "fs/promises"
+
+
 
 
 
@@ -16,7 +19,7 @@ export async function getPostByName(
 ): Promise<BlogPost | undefined> {
   try {
     const fullPath = path.join(postsDirectory, fileName);
-    const fileContents = fs.readFileSync(fullPath, "utf8");
+    const fileContents = await fsPromises.readFile(fullPath, "utf8");
     const rawMDX = fileContents;
 
     if (rawMDX === "404: Not Found") return undefined;
@@ -69,7 +72,7 @@ export async function getPostByName(
 
 export async function getPostsMeta(): Promise<Meta[] | undefined> {
   try {
-    const fileNames = fs.readdirSync(postsDirectory);
+    const fileNames = await fsPromises.readdir(postsDirectory);
     console.log(fileNames);
 
     // console.log(res.data);
