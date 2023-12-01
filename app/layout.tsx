@@ -42,7 +42,7 @@ export const metadata: Metadata = {
   }
 };
 
-export const runtime = 'edge' // 'nodejs' (default) | 'edge'
+// export const runtime = 'edge' // 'nodejs' (default) | 'edge'
 
 
 export default function RootLayout({

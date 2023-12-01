@@ -3,15 +3,9 @@ import { compileMDX } from "next-mdx-remote/rsc";
 // import rehypeSlug from "rehype-slug";
 // import rehypePrism from "@mapbox/rehype-prism";
 import path from "path";
-import fs from "fs";
+import fs from "fs"
 
-// import hljs from "highlight.js/lib/core";
-// import "highlight.js/styles/default.css";
-// import "highlight.js/lib/languages/bash";
 
-// hljs.registerLanguage("bash", require("highlight.js/lib/languages/bash"));
-
-// const highlight = hljs.highlight;
 
 const postsDirectory = path.join(process.cwd(), "blogposts");
 
