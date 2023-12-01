@@ -4,7 +4,6 @@ const nextConfig = {
     appDir: true,
     runtime: "experimental-edge",
   },
-  distDir: 'build',
   reactStrictMode: true,
   swcMinify: true,
   images: {
