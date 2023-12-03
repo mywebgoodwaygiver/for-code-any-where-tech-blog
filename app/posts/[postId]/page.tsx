@@ -12,7 +12,7 @@ type Props = {
     postId: string;
   };
 };
-export const runtime = 'edge';
+// export const runtime = 'edge';
 export async function generateStaticParams() {
   const posts = await getPostsMeta(); //deduped!
 
@@ -35,7 +35,7 @@ const {meta} = post;
   return {
     title: meta.title,
     description: meta.description,
-    keywords: [...meta.tags],
+    keywords: [meta.tags],
     alternates: {
       canonical: `/posts/${meta.id}`,
   },
@@ -96,7 +96,7 @@ export default async function Post({ params: { postId } }: Props) {
   }
 
   myTags.forEach((tag) => {
-    console.log(tag);
+    // console.log(tag);
     const tagPosts = posts.filter((post) => post.tags.includes(tag));
     if (tagPosts) {
       tagPosts.forEach((tagPost) => {

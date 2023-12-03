@@ -1,5 +1,5 @@
 import React from "react";
-import Image from 'next/image';
+import Image from "next/image";
 const ServicesPage = () => {
   return (
     <>
@@ -13,7 +13,12 @@ const ServicesPage = () => {
               1. Good Way Giver Shop
             </h1>
             <p className="max-w-2xl mb-6 mx-4 font-semibold text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
-            This is our eCommerce website, where you'll discover a fantastic selection of products handpicked just for you. We've joined Amazon's affiliate program to bring you the best deals and top-quality items. It's as simple as this: you browse, you shop, and we earn a little something for helping you find what you need and a better product.
+              This is our eCommerce website, where you'll discover a fantastic
+              selection of products handpicked just for you. We've joined
+              Amazon's affiliate program to bring you the best deals and
+              top-quality items. It's as simple as this: you browse, you shop,
+              and we earn a little something for helping you find what you need
+              and a better product.
             </p>
             <a
               target="_blank"
@@ -35,11 +40,9 @@ const ServicesPage = () => {
           </div>
           <div className=" flex justify-center lg:mt-0 lg:col-span-5 lg:flex">
             <Image
- width={650}
- height={650}
-
- 
-            className="rounded-full"
+              width={200}
+              height={200}
+              className="rounded-full mt-auto w-auto h-[250px]"
               src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhbquYFtQINQQt3iga7xmwBxMtuG_HMVMEiEVai00VSXCIlslyWBwnPOIwtSsqFHjlVljGVIhvIsDn4_44Rix8-oU9EaW48LbnVi-kQLbbYx4K_ciiaV09XXCEhHMjK0BIG-xK6-tGHHUx3GCa3EEhA7T5UvMd_BawTHAiH952VyQidThDOP-uvQAaLijQ/s320/logogif.gif"
               alt="GWG Logo"
             />

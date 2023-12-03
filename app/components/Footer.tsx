@@ -33,7 +33,7 @@ const Footer = () => {
                     <Link
                       target="_blank"
                       href="https://shop.goodwaygiver.site/"
-                      className="hover:underline"
+                      className="hover:underline hover:ml-1.5"
                     >
                       Shop
                     </Link>
@@ -42,7 +42,7 @@ const Footer = () => {
                     <Link
                       target="_blank"
                       href="https://shop.goodwaygiver.site/"
-                      className="hover:underline"
+                      className="hover:underline hover:ml-1.5"
                     >
                       Affiliated Shop
                     </Link>
@@ -58,7 +58,7 @@ const Footer = () => {
                     <Link
                       target="_blank"
                       href="https://www.youtube.com/@GoodWayGiver"
-                      className="hover:underline "
+                      className="hover:underline hover:ml-1.5 "
                     >
                       YouTube
                     </Link>
@@ -67,7 +67,7 @@ const Footer = () => {
                     <Link
                       target="_blank"
                       href="https://instagram.com/goodwaygivertech?igshid=OGQ5ZDc2ODk2ZA=="
-                      className="hover:underline"
+                      className="hover:underline hover:ml-1.5"
                     >
                       Instagram
                     </Link>
@@ -76,7 +76,7 @@ const Footer = () => {
                     <Link
                       target="_blank"
                       href="https://www.facebook.com/goodwaygiver?mibextid=ZbWKwL"
-                      className="hover:underline"
+                      className="hover:underline hover:ml-1.5 "
                     >
                       FaceBook
                     </Link>
@@ -92,7 +92,7 @@ const Footer = () => {
                     <Link
                       target="_blank"
                       href="/about"
-                      className="hover:underline "
+                      className="hover:underline hover:ml-1.5 "
                     >
                       About Me
                     </Link>
@@ -101,7 +101,7 @@ const Footer = () => {
                     <Link
                       target="_blank"
                       href="/contax"
-                      className="hover:underline"
+                      className="hover:underline hover:ml-1.5"
                     >
                       Contact Me
                     </Link>
@@ -117,7 +117,7 @@ const Footer = () => {
                     <Link
                       href={"/privacy-policy"}
                       target="_blank"
-                      className="hover:underline"
+                      className="hover:underline hover:ml-1.5"
                     >
                       Privacy Policy
                     </Link>
@@ -126,7 +126,7 @@ const Footer = () => {
                     <Link
                       href={"/terms-conditions"}
                       target="_blank"
-                      className="hover:underline"
+                      className="hover:underline hover:ml-1.5"
                     >
                       Terms &amp; Conditions
                     </Link>
@@ -135,11 +135,11 @@ const Footer = () => {
               </div>
             </div>
           </div>
-          <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-500 lg:my-8" />
-          <div className="socel-media-icons sm:flex sm:items-center sm:justify-between ">
+          <hr className=" border-gray-200 sm:mx-auto dark:border-gray-500" />
+          <div className=" my-3 socel-media-icons sm:flex sm:items-center sm:justify-between sm:flex-row ">
             <span className="text-sm font-semibold text-gray-500 sm:text-center dark:text-gray-400">
               © 2023{" "}
-              <Link href="https://flowbite.com" className="hover:underline">
+              <Link href="/" className="hover:underline ">
                 Good Way Giver
               </Link>
               . All Well
@@ -205,7 +205,7 @@ const Footer = () => {
               </Link>
             </div>
           </div>
-          <hr className="mt-6 mb-1 border-gray-200 sm:mx-auto dark:border-white  " />
+          <hr className=" mb-1 border-gray-200 sm:mx-auto dark:border-white  " />
         </div>
       </footer>
     </>

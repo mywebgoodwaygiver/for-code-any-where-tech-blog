@@ -20,7 +20,7 @@ const Related: React.FC<Props> = ({ props: { MyPostsByTags } }: Props) => {
   .filter((post): post is Meta => post !== undefined); // Filter out undefined values explicitly
 
 
-  console.log("UniquePostsArray:", uniquePostsArray);
+  // console.log("UniquePostsArray:", uniquePostsArray);
 
 
 

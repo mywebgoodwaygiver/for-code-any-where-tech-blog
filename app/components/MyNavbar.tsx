@@ -1,6 +1,12 @@
 "use client";
 
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, {
+  HtmlHTMLAttributes,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
@@ -11,7 +17,6 @@ import {
   typingInput,
   latestPost,
   popularPost,
-  currentUrl,
 } from "./context/ContextProvider";
 import {
   getLatestPostFunc,
@@ -28,6 +33,16 @@ function MyNavbar(props: Props) {
 
   const { typing, setTyping } = useContext(typingInput);
 
+  const [urlNow, setUrlNow ] = useState("home");
+
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+    // Use type assertion to tell TypeScript that 'e.target' is an HTMLAnchorElement
+    const anchorElement = e.target as HTMLAnchorElement;
+
+    // Toggle the state on button click
+    setUrlNow(anchorElement.id);
+  };
+
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -35,7 +50,7 @@ function MyNavbar(props: Props) {
   const { postData, setPostData } = useContext(postdata);
   const { searchInput, setSearchInput } = useContext(mySearchInput);
   const { showSpin, setShowSpin } = useContext(showSpiner);
-  const { urlNow, setUrlNow } = useContext(currentUrl);
+  // const { urlNow, setUrlNow } = useContext(currentUrl);
   const [tempInp, setTempInp] = useState<string>("");
   const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
 
@@ -54,7 +69,7 @@ function MyNavbar(props: Props) {
     // Your logic here
     console.log("Link clicked", url);
   };
-  console.log("urlNow :", urlNow);
+  
   const changeInpValue = (e: React.ChangeEvent<HTMLInputElement>) => {
     const search: string = e.target.value;
     console.log("Search value:", search);
@@ -169,7 +184,6 @@ function MyNavbar(props: Props) {
     focusInput();
   }, []);
 
-
   return (
     <>
       <div className="mb-[3rem]">
@@ -179,10 +193,8 @@ function MyNavbar(props: Props) {
               <div>
                 <Link href="/" className="flex items-center">
                   <Image
- width={40}
- height={40}
-
- 
+                    width={40}
+                    height={40}
                     src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg3XnABTUt4Qc9bJpf67KlHp0T06Tc4UuwbFeNBOs95cQ5CaoWitFztCbjNXMkqbQGig4QpEqZMJlNh8cDvkll7n7M_9km8jZRCZbWEcxIAM98aWZ-aCkEr0NprFxi9kKoTpFYZt_ghD5rSf_QvUl-f3fSWuErxi81MLrTcqQyT2OFmYMtTHMPQJ_8FzRo/w640-h640/Copy%20of%20GWG%20(192%20x%20192%20px).png"
                     className="h-10 mr-1 rounded-full"
                     alt="GoodWayGiver Logo"
@@ -200,10 +212,7 @@ function MyNavbar(props: Props) {
                 } md:w-auto flex w-full items-center `}
               >
                 <ul className="flex md:flex-row flex-col items-start md:items-center text-bold lg:gap-[3.5vw] gap-4  ">
-                  <li
-                    className="font-semibold text-lg"
-                    onClick={() => handlesetUrl("home")}
-                  >
+                  <li className="font-semibold text-lg">
                     <Link
                       href={"/"}
                       className={`block  ${
@@ -211,15 +220,13 @@ function MyNavbar(props: Props) {
                           ? "text-blue-700 dark:text-white underline underline-offset-8"
                           : "text-black"
                       }   dark:hover:text-white dark:text-gray-400 hover:text-blue-500 hover:underline hover:underline-offset-8`}
-                      onClick={() => handlesetUrl("home")}
+                      onClick={handleClick}
+                      id="home"
                     >
                       Home
                     </Link>
                   </li>
-                  <li
-                    className="font-semibold text-lg"
-                    onClick={() => handlesetUrl("about")}
-                  >
+                  <li className="font-semibold text-lg">
                     <Link
                       href={"/about"}
                       className={`block  ${
@@ -227,6 +234,8 @@ function MyNavbar(props: Props) {
                           ? "text-blue-700 dark:text-white underline underline-offset-8"
                           : "text-black"
                       }   dark:hover:text-white dark:text-gray-400 hover:text-blue-500 hover:underline hover:underline-offset-8`}
+                      onClick={handleClick}
+                      id="about"
                     >
                       About
                     </Link>
@@ -242,6 +251,8 @@ function MyNavbar(props: Props) {
                           ? "text-blue-700 dark:text-white underline underline-offset-8"
                           : "text-black"
                       }   dark:hover:text-white dark:text-gray-400 hover:text-blue-500 hover:underline hover:underline-offset-8`}
+                      onClick={handleClick}
+                      id="services"
                     >
                       Services
                     </Link>
@@ -276,6 +287,7 @@ function MyNavbar(props: Props) {
                           <li>
                             <Link
                               href="/contact"
+                              target="_blank"
                               passHref
                               className="block p-1 text-sm  hover:text-white  hover:bg-blue-500 rounded-md  w-[100%] " //   : "text-black ", //   ? "text-blue-700 hover:text-white" // urlNow === "contact"
                             >

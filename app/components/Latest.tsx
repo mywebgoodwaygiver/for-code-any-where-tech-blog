@@ -6,9 +6,9 @@ import Link from "next/link";
 import StopPoint from "../ContantComponents/StopPoint";
 import Spinner from "../ContantComponents/Spinner";
 import { SlFire } from "react-icons/sl";
-import Image from 'next/image';
+import Image from "next/image";
 const Latest = () => {
-  const { latestPostData } = useContext(latestPost)!;
+  const { latestPostData } = useContext(latestPost);
 
   return (
     <>
@@ -18,16 +18,14 @@ const Latest = () => {
             Latest{" "}
           </h2>{" "}
           <Image
- width={650}
- height={650}
-
- 
+            width={650}
+            height={650}
             className="h-8 w-8 dark:filter dark:invert"
             src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhlh9PF0i_UKcoE9U8SWHNG7CX2BhNeoLXmeIa-ACRdKv4VRGfgwri13zzQ4qf8XLce6TyEMX5C6A74F3JoxcQPwJcxRB_9sDZlztXBRR1e1MuUdmLGiw4CzE8_KsRu824nYp1R5Wr0teLnBGR5OIO-A-CUi3J6hWxKGxv5x7JdD2iSj9qlV6_zysZHBhA/w400-h400/latesticon.png"
             alt="new"
           />
         </div>
-        {latestPostData.length  && latestPostData.length > 0 ? (
+        {latestPostData && latestPostData.length > 0 ? (
           <div className="grid gap-8 mt-2 md:grid-cols-2 mb-2 ">
             {latestPostData.map((post, index) => (
               <div
@@ -37,17 +35,18 @@ const Latest = () => {
               >
                 <figure className="max-w-md mx-auto">
                   <Image
- width={650}
- height={650}
-
- 
+                    width={650}
+                    height={650}
                     className="h-auto max-w-full rounded-lg hover:scale-105 duration-300 transition-transform"
                     src={`${post.thumbnail}`}
                     alt="image description"
                   />
                 </figure>
 
-                <div className="pl-5 pr-2 mainContentsPost md:w-full" style={{}}>
+                <div
+                  className="pl-5 pr-2 mainContentsPost md:w-full"
+                  style={{}}
+                >
                   <Link href={`/posts${post.link}`}>
                     <h3 className="mytitle text-md font-bold my-2 tracking-[0.03] text-gray-900 dark:text-white">
                       <p>{post.title}</p>
@@ -76,8 +75,9 @@ const Latest = () => {
               </div>
             ))}
           </div>
-        ) : <Spinner></Spinner>}
-
+        ) : (
+          <Spinner></Spinner>
+        )}
       </section>
       <StopPoint></StopPoint>
     </>
