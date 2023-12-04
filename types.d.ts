@@ -7,6 +7,7 @@ type Meta = {
     link: string,
     description:string,
     // modified:string,
+    readTime:number
 }
 
 type BlogPost = {

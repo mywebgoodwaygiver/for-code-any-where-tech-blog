@@ -33,7 +33,7 @@ function MyNavbar(props: Props) {
 
   const { typing, setTyping } = useContext(typingInput);
 
-  const [urlNow, setUrlNow ] = useState("home");
+  const [urlNow, setUrlNow] = useState("home");
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
     // Use type assertion to tell TypeScript that 'e.target' is an HTMLAnchorElement
@@ -69,7 +69,7 @@ function MyNavbar(props: Props) {
     // Your logic here
     console.log("Link clicked", url);
   };
-  
+
   const changeInpValue = (e: React.ChangeEvent<HTMLInputElement>) => {
     const search: string = e.target.value;
     console.log("Search value:", search);
@@ -183,7 +183,7 @@ function MyNavbar(props: Props) {
     getPopularPost();
     focusInput();
   }, []);
-
+  console.log("urlNow ", urlNow);
   return (
     <>
       <div className="mb-[3rem]">
@@ -259,11 +259,11 @@ function MyNavbar(props: Props) {
                   </li>
                   <li className="font-semibold text-lg    ">
                     <div
-                      className={` ${
-                        urlNow === "contact"
-                          ? "text-blue-700 dark:text-white underline underline-offset-8"
-                          : "text-black "
-                      } dark:text-gray-400  `}
+                    // className={` ${
+                    //   urlNow === "contact"
+                    //     ? "text-blue-700 dark:text-white underline underline-offset-8"
+                    //     : "text-black "
+                    // } dark:text-gray-400  `}
                     >
                       <div className="dropdown dropdown-hover">
                         <label
@@ -286,18 +286,21 @@ function MyNavbar(props: Props) {
                         >
                           <li>
                             <Link
-                              href="/contact"
-                              target="_blank"
-                              passHref
-                              className="block p-1 text-sm  hover:text-white  hover:bg-blue-500 rounded-md  w-[100%] " //   : "text-black ", //   ? "text-blue-700 hover:text-white" // urlNow === "contact"
+                              href={"/services"}
+                              className={`p-1 text-sm flex items-center  hover:text-white dark:hover:text-white hover:bg-blue-500 rounded-md  w-[100%]  ${
+                                urlNow === "contact"
+                                  ? "text-white bg-blue-500 rounded-md"
+                                  : "text-black dark:text-white"
+                              }   dark:hover:text-white`}
+                              onClick={handleClick}
+                              id="contact"
                             >
-                              <input
-                                type="radio"
-                                name="theme-dropdown"
-                                className="theme-controller btn btn-sm btn-block btn-ghost justify-start"
-                                aria-label="Contact"
-                                value="Contact"
-                              />
+                               <p
+                                title="Contact me"
+                                className="theme-controller btn btn-sm btn-block btn-ghost justify-start pr-1"
+                              >
+                                Contact
+                              </p>
                             </Link>
                           </li>
                           <li>
@@ -305,15 +308,14 @@ function MyNavbar(props: Props) {
                               href="https://shop.goodwaygiver.site"
                               passHref
                               target="_blank"
-                              className=" p-1 text-sm flex items-center  hover:text-white dark:hover:text-white hover:bg-blue-500 rounded-md  w-[100%] "
+                              className="mt-1 p-1 text-sm flex items-center  hover:text-white dark:hover:text-white hover:bg-blue-500 rounded-md  w-[100%] "
                             >
-                              <input
-                                type="radio"
-                                name="theme-dropdown"
+                              <p
+                                title="Go to Our Shop"
                                 className="theme-controller btn btn-sm btn-block btn-ghost justify-start pr-1"
-                                aria-label="Shop 🛍️"
-                                value="Shop"
-                              />
+                              >
+                                Shop 🛍️
+                              </p>
                             </Link>
                           </li>
                         </ul>

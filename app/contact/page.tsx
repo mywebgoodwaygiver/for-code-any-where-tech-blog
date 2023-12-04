@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
 import React, { useState } from "react";
 import StopPoint from "../ContantComponents/StopPoint";
 import { sendEmail } from "../apiCalls/Apis";
-
+import Link from "next/link";
 const ContactPage = () => {
   const [mailOptions, setMailOptions] = useState({
     subject: "",
@@ -13,25 +13,27 @@ const ContactPage = () => {
   const [sending, setSending] = useState(false);
   const [sent, setSent] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
+  const [errWSent, setErrWSent] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setMailOptions({ ...mailOptions, [e.target.name]: e.target.value });
     setAlertMessage("");
   };
-  
 
-  const showAlert = (message:string) => {
+  const showAlert = (message: string) => {
     setAlertMessage(message);
 
     // Clear the alert after 3 seconds
- 
   };
 
-     setTimeout(() => {
-      setSent(false);
-    }, 15000);
+  const handleSendAgain =()=> {
+    setSending(false);
+  }
+  
 
-  const sendEmailFunc = async (e?:React.ChangeEvent<HTMLInputElement>) => {
+  const sendEmailFunc = async (e?: React.ChangeEvent<HTMLInputElement>) => {
     e?.preventDefault();
 
     // Check if required fields are empty before sending the email
@@ -47,7 +49,11 @@ const ContactPage = () => {
 
     if (typeof response === "string") {
       // Handle the case where there is an error (response is a string)
+
       console.error("Error:", response);
+      return setErrWSent(true)
+
+
     } else {
       // Handle the case where the request was successful (response is an AxiosResponse)
       data = response.data;
@@ -55,14 +61,15 @@ const ContactPage = () => {
 
     // Now you can use 'data' without TypeScript errors
     console.log(data);
-         
-
 
     if (data.status === 200) {
       setSent(true);
     }
+    else{
+setErrWSent(true)
+    }
 
-    setSending(false);
+    
     setMailOptions({
       subject: "",
       from: "",
@@ -72,157 +79,157 @@ const ContactPage = () => {
 
   return (
     <>
-      <div className="dark:bg-gray-900">
-      <div className="mx-4 lg:mx-16 bg-gray-50 dark:bg-gray-900">
-          <div className="  dark:text-white w-full lg:text-2xl shadow-lg  rounded-md py-8 bg-white dark:bg-gray-800 mx-auto  font-medium text-center">
-            <span className=" w-full  text-justify">
-              Hey, if you are seeing any bugs, spelling mistakes, or errors in
-              the content, please inform me using the contact information below.
-              I will definitely respond and fix any issues. Also you want to
-              inform me something you can contact to me. You will get responece
-              within 12 hours.
-            </span>
-            <hr className="border-t-2  border-sky-600 mt-4" />
-            <span className="block pt-2 ml-4 text-start text-blue-500 text-xl">
-              Contact With Email
-            </span>
-            <div className="email pt-5 flex items-center justify-center">
-              <svg
-                className="w-6 h-6 text-gray-800 dark:text-white"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor"
-                viewBox="0 0 20 16"
-              >
-                <path d="m10.036 8.278 9.258-7.79A1.979 1.979 0 0 0 18 0H2A1.987 1.987 0 0 0 .641.541l9.395 7.737Z" />
-                <path d="M11.241 9.817c-.36.275-.801.425-1.255.427-.428 0-.845-.138-1.187-.395L0 2.6V14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2.5l-8.759 7.317Z" />
-              </svg>
-              <p className="ml-2">Email</p>
-            </div>
-            <p className="myemail font-medium pt-1 pb-2 ">
-              contact@goodwaygiver.site
-            </p>
-            <hr className="border-t-1 border-sky-600" />
-          </div>
+    <div className="mx-4 lg:mx-16">
+      <div className="  dark:text-white w-full lg:text-2xl shadow-lg rounded-md py-8 font-medium bg-gray-50 dark:bg-slate-800">
+        <span className=" w-full  text-justify text-gray-400">
+          Hey, if you are seeing any bugs, spelling mistakes, or errors in the
+          content, please inform me using the contact information below. I will
+          definitely respond and fix any issues. Also you want to inform me
+          something you can contact to me. You will get responece within 12
+          hours. Email {"=>"}{" "}
+          <b className="text-gray-100 text-underline">contact@goodwaygiver.site</b>{" "}
+          <Link className="text-blue-500" target="_blank" href={"mailto:contact%40goodwaygiver.site"}>Contect Now</Link>
+        </span>
+        <StopPoint style="dark:bg-slate-800"  ></StopPoint>
+        <div
+          id="send-message"
+          className="px-4 flex flex-col justify-center min-h-screen max-w-md mx-auto"
+        >
+          <span className="block pt-2 text-start text-white font-bold  text-xl">
+            Contact Now - Fill this form{" "}
+          </span>
 
-          <div className="bg-gradient-to-tr from-fuchsia-300 to-sky-500 mx-4 rounded mt-2 mb-4 lg:px-8 lg:mb-8">
-            <section
-              id="send-message"
-              className="px-4 flex flex-col justify-center min-h-screen max-w-md mx-auto"
-            >
-              <span className="block pt-2 text-start text-white font-bold  text-xl">
-                Contact Now - Fill this form{" "}
-              </span>
-
-              <div className="p-6 bg-sky-100 rounded">
-                <div className="flex items-center justify-center font-black m-3 mb-4">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-10 w-10 mr-3 text-red-600 animate-pulse"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
+          <div className="relative py-3 sm:mx-auto sm:min-w-[35rem] my-4">
+            <div className="to-light-blue-500 absolute inset-0 -skew-y-6 transform rounded-3xl bg-gradient-to-r from-cyan-400 shadow-lg sm:-rotate-6 sm:skew-y-0"></div>
+            <div className="relative rounded-3xl bg-white p-20 px-4 py-10 shadow-lg">
+              <form>
+                <div className="mb-5">
+                  <label
+                    htmlFor="name"
+                    className="mb-2 block text-sm font-medium text-gray-600"
                   >
-                    <path
-                      fillRule="evenodd"
-                      d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  <h1 className="tracking-wide text-2xl text-gray-900">
-                    convey your message
-                  </h1>
-                </div>
-                <form>
-                  {/* <!-- id="login_form"
-            action="api_login"
-            method="POST"
-            className="flex flex-col justify-center" --> */}
-
-                  <div className="flex justify-between items-center mb-3"></div>
-                  <label className="text-sm font-medium">Full Name</label>
-                  <input
-                    className="mb-3 px-2  mt-1 block w-full  border border-gray-300 rounded-md text-sm shadow-sm placeholder-gray-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 focus:invalid:border-red-500 focus:invalid:ring-red-500"
-                    type="text"
-                    name="fullname"
-                    placeholder="e.g. Shivam Kumar"
-                    
-                  />
-                  <label className="text-sm font-medium">
-                    Title / Subject (Required)
+                    Full Name
                   </label>
                   <input
-                    className="mb-3  mt-1 block w-full px-2 border border-gray-300 rounded-md text-sm shadow-sm placeholder-gray-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 focus:invalid:border-red-500 focus:invalid:ring-red-500"
                     type="text"
+                    id="name"
+                    name="name"
+                    className="w-full rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-cyan-500 dark:bg-gray-800"
+                  />
+                </div>
+                <div className="mb-5">
+                  <label
+                    htmlFor="title"
+                    className="mb-2 block text-sm font-medium text-gray-600"
+                  >
+                    Title / Subject <span className="text-red-600">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="title"
                     name="subject"
-                    placeholder="spelling mistakes ..."
+                    className="w-full rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-cyan-500 dark:bg-gray-800"
                     required
                     value={mailOptions.subject}
                     onChange={handleChange}
                   />
-                  <label className="text-sm font-medium">Email (Required)</label>
+                </div>
+                <div className="mb-5">
+                  <label
+                    htmlFor="email"
+                    className="mb-2 block text-sm font-medium text-gray-600"
+                  >
+                    Email<span className="text-red-600">*</span>
+                  </label>
                   <input
-                    className=" mb-3 mt-1 block w-full px-2 border border-gray-300 rounded-md text-sm shadow-sm placeholder-gray-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 focus:invalid:border-red-500 focus:invalid:ring-red-500"
                     type="email"
+                    id="email"
                     name="from"
-                    placeholder="Email"
+                    className="w-full rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-cyan-500 dark:bg-gray-800"
                     required
                     value={mailOptions.from}
-                    onChange={(e)=> handleChange(e)}
+                    onChange={handleChange}
                   />
-                  <label className="text-sm font-medium">Messages (Required)</label>
+                </div>
+                <div className="mb-5">
+                  <label
+                    htmlFor="message"
+                    className="mb-2 block text-sm font-medium text-gray-600"
+                  >
+                    Messages<span className="text-red-600">*</span>
+                  </label>
                   <textarea
-                    className="mb-3 mt-1 block w-full px-2 py-1.5 border border-gray-300 rounded-md text-sm shadow-sm placeholder-gray-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 focus:invalid:border-red-500 focus:invalid:ring-red-500"
+                    id="message"
                     name="text"
-                    rows={7}
-                    placeholder="Write something"
-                    value={mailOptions.text}
+                    rows={6}
+                    className="w-full rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-cyan-500 dark:bg-gray-800 "
                     required
-                    onChange={(e)=>handleChange(e)}
+                    value={mailOptions.text}
+                    onChange={handleChange}
                   ></textarea>
-                    {/* Custom Alert Component */}
-       {alertMessage && (
-          <div className="custom-alert">
-            <p className="block mx-auto mb-1 text-semibold text-[red]">{alertMessage}</p>
-          </div>
-        )}
+                </div>
+                <div className="mt-6">
+                  {alertMessage && (
+                    <div className="custom-alert">
+                      <p className="block mx-auto mb-1 text-semibold text-[red]">
+                        {alertMessage}
+                      </p>
+                    </div>
+                  )}
                   {!sent && !sending && (
                     <button
-                      className="px-4 py-1.5 rounded-md shadow-lg bg-gradient-to-r from-pink-600 to-red-600 font-medium text-gray-100 block transition duration-300"
+                      className="to-light-blue-500 hover:to-light-blue-600 w-full rounded-md bg-gradient-to-r from-cyan-400 px-4 py-2 text-base font-medium text-white hover:bg-gradient-to-r hover:from-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 dark:bg-gray-800 focus:ring-offset-2"
                       onClick={() => sendEmailFunc()}
-
-                      
                     >
-                      {/* <span id="login_process_state" className={ ` ${sending || sent?"": "hidden"}`}>
-                      Sending :)
-                    </span>
-                    <span id="login_default_state">
-                      <span className={ `subtotal ${sending || sent?"hidden": ""}`} onClick={(e)=>sendEmailFunc(e)}>Send Now</span>
-                    </span>
-                    <span id="sent">
-                      <span id={ `subtotal ${sent ?"": "hidden"}`} >Sent</span>
-                    </span> */}
-                      Send Now
+                      Send Message
                     </button>
                   )}
                   {sending && (
-                    <button className="px-4 py-1.5 rounded-md shadow-lg bg-gradient-to-r from-pink-600 to-red-600 font-medium text-gray-100 block transition duration-300">
-                      Sending...
+                    <button 
+                    className="to-light-blue-500 hover:to-light-blue-600 w-full rounded-md bg-gradient-to-r from-cyan-400 px-4 py-2 text-base font-medium text-white hover:bg-gradient-to-r hover:from-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 dark:bg-gray-800 focus:ring-offset-2"
+                    >
+                    Sending...
                     </button>
                   )}
                   {sent && (
-                    <button className="px-4 py-1.5 rounded-md shadow-lg bg-gradient-to-r from-lime-600 to-green-600 font-medium text-gray-100 block transition duration-300">
-                      Sent Successfully
+                    <div className="flex gap-2">
+                    <button 
+                    className="to-light-blue-500 hover:to-light-blue-600 w-full rounded-md bg-gradient-to-r from-lime-400 px-4 py-2 text-base font-medium text-white hover:bg-gradient-to-r hover:from-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 dark:bg-gray-800 focus:ring-offset-2"
+                    >
+                    Sent Successfully
                     </button>
+                      <button 
+                      className="to-light-blue-500 hover:to-light-blue-600 w-full rounded-md bg-gradient-to-r from-cyan-400px-4 py-2 text-base font-medium text-white hover:bg-gradient-to-r hover:from-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 dark:bg-gray-800 focus:ring-offset-2"
+                      onClick={handleSendAgain}
+                      >
+                     Send Again
+                      </button>
+                      </div>
                   )}
-                </form>
-              </div>
-            </section>
+                  {errWSent && (
+                    <div className="flex gap-2"> <button 
+                    className="to-light-blue-500 hover:to-light-blue-600 w-full rounded-md bg-gradient-to-r from-red-600 px-4 py-2 text-base font-medium text-white hover:bg-gradient-to-r hover:from-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 dark:bg-red-600 focus:ring-offset-2"
+                    >
+                    Error while sending
+                    </button>
+                    <button 
+                    className="to-light-blue-500 hover:to-light-blue-600 w-full rounded-md bg-gradient-to-r from-cyan-400px-4 py-2 text-base font-medium text-white hover:bg-gradient-to-r hover:from-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 dark:bg-gray-800 focus:ring-offset-2"
+                    onClick={handleSendAgain}
+                    >
+                   Send Again
+                    </button>
+                    </div>
+                   
+                  )}
+                </div>
+              </form>
+            </div>
           </div>
         </div>
-
-        <StopPoint></StopPoint>
       </div>
-     
+
+      <StopPoint style="dark:bg-slate-800" ></StopPoint>
+      </div>
     </>
   );
 };

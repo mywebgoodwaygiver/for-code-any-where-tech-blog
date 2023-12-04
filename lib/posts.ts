@@ -4,36 +4,39 @@ import rehypeHighlight from "rehype-highlight/lib";
 import rehypeSlug from "rehype-slug";
 import Video from "@/app/components/Video";
 import CustomImage from "@/app/components/CustomImage";
-import { config } from "dotenv";
-
-config();
-
 type Filetree = {
-  tree: [
-    {
-      path: string;
-    }
-  ];
+  files: String[];
 };
 
 export async function getPostByName(
   fileName: string
 ): Promise<BlogPost | undefined> {
   let res = await fetch(
-    `https://raw.githubusercontent.com/Goodwaygiver/lets-add-data/main/${fileName}`,
-    {
-      method: "GET",
-      headers: {
-        Accept: 'application/vnd.github+json',
-        Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
-        'X-GitHub-Api-Version': '2022-11-28',
-    }
-    }
+    `https://mykv-tutorial.goodwaygiver1.workers.dev/files/${fileName}`
+    // {
+    //   method: "GET",
+    //   headers: {
+    //     Accept: 'application/vnd.github+json',
+    //     Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
+    //     'X-GitHub-Api-Version': '2022-11-28',
+    // }
+    // }
   );
 
   let rawMDX = await res.text();
   if (!rawMDX) return undefined;
-  console.log("data =>>", "avlable");
+
+
+  function readTime(inputString: string) {
+    // Default values
+    const wordsPerMinute = 200;
+    const totalWords = inputString.trim().split(/\s+/).length;
+    const totalMinutes = Math.ceil(totalWords / wordsPerMinute);
+
+    return totalMinutes;
+  }
+
+  let readTimeIs= readTime(rawMDX)
 
   if (rawMDX === "404: Not Found") return undefined;
 
@@ -79,6 +82,7 @@ export async function getPostByName(
       link: frontmatter.link,
       description: frontmatter.description,
       // modified: frontmatter.modified,
+      readTime:readTimeIs
     },
     content,
   };
@@ -87,33 +91,36 @@ export async function getPostByName(
 
 export async function getPostsMeta(): Promise<Meta[] | undefined> {
   const res = await fetch(
-    "https://api.github.com/repos/goodwaygiver/lets-add-data/git/trees/main?recursive=1",
-    {
-      headers: {
-        Accept: "application/vnd.github+json",
-        Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
-        "X-GitHub-Api-Version": "2022-11-28",
-      },
-    }
+    "https://mykv-tutorial.goodwaygiver1.workers.dev/allFilesList"
   );
 
+  // console.log("res=>>>>>", res);
   if (!res.ok) return undefined;
 
   const repoFiletree: Filetree = await res.json();
 
-  const filesArray = repoFiletree.tree
-    .map((obj) => obj.path)
+  const filesArray = repoFiletree.files
+    .map((filename) => filename)
     .filter((path) => path.endsWith(".mdx"));
-
+  console.log("filesArray=>>>>>>", filesArray);
   const posts: Meta[] = [];
 
-  for (const file of filesArray) {
-    const post = await getPostByName(file);
-    if (post) {
-      const { meta } = post;
-      posts.push(meta);
+  filesArray.map(async (file: any) => {
+    try {
+      const post = await getPostByName(file);
+      if (post) {
+        const { meta } = post;
+        posts.push(meta);
+      }
+    } catch (error) {
+      console.log(error);
+      console.log(
+        "hey bro here getting err bhai ji  and filename is =>>>>>",
+        file
+      );
     }
-  }
+  });
+
 
   return posts.sort((a, b) => (a.date < b.date ? 1 : -1));
 }
