@@ -9,7 +9,7 @@ type Props = {
         tag: string
     }
 }
-// export const runtime = 'edge';
+export const runtime = 'edge';
 export async function generateStaticParams() {
     const posts = await getPostsMeta() //deduped!
 

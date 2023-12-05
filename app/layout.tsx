@@ -59,7 +59,7 @@ export const metadata: Metadata = {
 },
 twitter: {
     card: 'summary_large_image',
-    site: '@goodwaygiver',
+    site: 'https://www.goodwaygiver.site',
     title: "Good Way Giver Blog", 
     description: "Hello, I'm Shivam 👋. Here explore many things to make easy your life. I upload tech related content and solve many things in easy way.", 
     creator: '@goodwaygiver',
