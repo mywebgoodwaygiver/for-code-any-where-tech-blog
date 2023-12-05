@@ -1,5 +1,5 @@
 import matter from "gray-matter";
-import serialize from "next-mdx-remote/serialize";
+import {serialize} from "next-mdx-remote/serialize";
 import {marked} from "marked"
 // import { bundleMDX } from "mdx-bundler";
 // import fs from 'node:fs/promises';
