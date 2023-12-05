@@ -13,14 +13,7 @@ export async function getPostByName(
 ): Promise<BlogPost | undefined> {
   let res = await fetch(
     `https://mykv-tutorial.goodwaygiver1.workers.dev/files/${fileName}`
-    // {
-    //   method: "GET",
-    //   headers: {
-    //     Accept: 'application/vnd.github+json',
-    //     Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
-    //     'X-GitHub-Api-Version': '2022-11-28',
-    // }
-    // }
+  
   );
 
   let rawMDX = await res.text();
