@@ -118,7 +118,7 @@ export default async function Post({ params: { postId } }: Props) {
           </p>
         </div>
         <article className="myPostContentInArticle text-black dark:text-white ">
-          {content}
+        <div dangerouslySetInnerHTML={{ __html: content }} />
         </article>
       </div>
       <div>

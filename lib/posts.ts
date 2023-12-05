@@ -1,5 +1,4 @@
 import matter from "gray-matter";
-import {serialize} from "next-mdx-remote/serialize";
 import {marked} from "marked"
 // import { bundleMDX } from "mdx-bundler";
 // import fs from 'node:fs/promises';
@@ -20,7 +19,7 @@ export async function getPostByName(
   const rawMDX = await res.text();
 
   const { data, content } = matter(rawMDX);
-
+  console.log("data=>>>>>>>>>>>>>", data)
   // const components = {
   //   // Define your components here (Video, CustomImage, etc.)
   //   // Video,
@@ -39,7 +38,6 @@ export async function getPostByName(
   let readTimeIs = readTime(rawMDX);
 
   const result = await marked(content);
-  const mdxSource = await serialize(result, { scope: data });
 
 
   const blogPostObj: BlogPost = {
@@ -53,11 +51,13 @@ export async function getPostByName(
       description: data.description,
       readTime: readTimeIs,
     },
-    content: mdxSource,
+    content: result,
   };
+console.log("blogPostObj=>>>", blogPostObj)
 
   return blogPostObj;
 }
+
 
 export async function getPostsMeta(): Promise<Meta[] | undefined> {
   const res = await fetch(
