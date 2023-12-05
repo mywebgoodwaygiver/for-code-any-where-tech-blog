@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     default: "Good Way Giver",
   },
   description:
-    "Hello, I'm Shivam. 👋 I am a coder and know web development skills.",
+    "Hello, I'm Shivam 👋. Here explore many things to make easy your life. I upload tech related content and solve many things in easy way.",
   applicationName: "Good Way Giver Blog",
   authors: [{ name: "Shivam Kumar" }],
   generator: "Next.js",
@@ -40,6 +40,39 @@ export const metadata: Metadata = {
   verification:{
     google:"id"
   }
+,
+  openGraph: {
+    title:"Good Way Giver - Blogs",
+    description: "Hello, I'm Shivam 👋. Here explore many things to make easy your life. I upload tech related content and solve many things in easy way.",
+    url: `https://www.goodwaygiver.site`,
+    type: 'website',
+    siteName: "Good Way Giver Blog",
+    images: [
+        {
+            url: `https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgrcjG6b5PKgxUM1nQPHWar4G7j5zUG2361ss8cZdonJwAAXScn98ZaJZ7k_ahqAV-6pTxx0yv8XvEoWa65vFe0e4NzgA7NPhoIO6H_Dm78hGF1ZL2pctq8Xjd5fn8DawDujzRC7GXog-JnMet0otk5gYJ31DBTsRX8nxB5pwoXnCdiig4JnXDDyVr1Kkg/w640-h640/GWG.png`,
+            secureUrl: `https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgrcjG6b5PKgxUM1nQPHWar4G7j5zUG2361ss8cZdonJwAAXScn98ZaJZ7k_ahqAV-6pTxx0yv8XvEoWa65vFe0e4NzgA7NPhoIO6H_Dm78hGF1ZL2pctq8Xjd5fn8DawDujzRC7GXog-JnMet0otk5gYJ31DBTsRX8nxB5pwoXnCdiig4JnXDDyVr1Kkg/w640-h640/GWG.png`,
+            width: 1200,
+            height: 630,
+            alt: `Preview image for ${"Good Way Giver - Blogs"}`,
+        }
+    ],
+},
+twitter: {
+    card: 'summary_large_image',
+    site: '@goodwaygiver',
+    title: "Good Way Giver Blog", 
+    description: "Hello, I'm Shivam 👋. Here explore many things to make easy your life. I upload tech related content and solve many things in easy way.", 
+    creator: '@goodwaygiver',
+    images: { 
+        url: `https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgrcjG6b5PKgxUM1nQPHWar4G7j5zUG2361ss8cZdonJwAAXScn98ZaJZ7k_ahqAV-6pTxx0yv8XvEoWa65vFe0e4NzgA7NPhoIO6H_Dm78hGF1ZL2pctq8Xjd5fn8DawDujzRC7GXog-JnMet0otk5gYJ31DBTsRX8nxB5pwoXnCdiig4JnXDDyVr1Kkg/w640-h640/GWG.png`,
+        alt: `Preview image for Good Way Giver Blog`, 
+    },
+},
+
+
+
+
+
 };
 
 // export const runtime = 'edge' // 'nodejs' (default) | 'edge'
