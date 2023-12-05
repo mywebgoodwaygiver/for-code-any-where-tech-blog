@@ -90,6 +90,8 @@ export async function getPostsMeta(): Promise<Meta[] | undefined> {
       );
     }
   });
+const finalReturn = posts.sort((a, b) => (a.date < b.date ? 1 : -1));
 
-  return posts.sort((a, b) => (a.date < b.date ? 1 : -1));
+// console.log("finalReturn=>>>>>>>>>", finalReturn)
+  return finalReturn
 }

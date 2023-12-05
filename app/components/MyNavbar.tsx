@@ -286,10 +286,10 @@ function MyNavbar(props: Props) {
                         >
                           <li>
                             <Link
-                              href={"/services"}
+                              href={"/contact"}
                               className={`p-1 text-sm flex items-center  hover:text-white dark:hover:text-white hover:bg-blue-500 rounded-md  w-[100%]  ${
                                 urlNow === "contact"
-                                  ? "text-white bg-blue-500 rounded-md"
+                                  ? "text-white bg-blue-500 dark:bg-blue-500 rounded-md"
                                   : "text-black dark:text-white"
                               }   dark:hover:text-white`}
                               onClick={handleClick}
