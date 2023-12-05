@@ -1,24 +1,31 @@
-import { compileMDX } from 'next-mdx-remote/rsc'
-import rehypeAutolinkHeadings from "rehype-autolink-headings/lib";
-import rehypeHighlight from "rehype-highlight/lib";
-import rehypeSlug from "rehype-slug";
-import Video from "@/app/components/Video";
-import CustomImage from "@/app/components/CustomImage";
+import matter from "gray-matter";
+import serialize from "next-mdx-remote/serialize";
+import {marked} from "marked"
+// import { bundleMDX } from "mdx-bundler";
+// import fs from 'node:fs/promises';
+// import { ReactElement } from 'react';
+
+// Import your components (Video, CustomImage, etc.) here
 type Filetree = {
   files: String[];
 };
 
+
 export async function getPostByName(
   fileName: string
 ): Promise<BlogPost | undefined> {
-  let res = await fetch(
+  const res = await fetch(
     `https://mykv-tutorial.goodwaygiver1.workers.dev/files/${fileName}`
-  
   );
+  const rawMDX = await res.text();
 
-  let rawMDX = await res.text();
-  if (!rawMDX) return undefined;
+  const { data, content } = matter(rawMDX);
 
+  // const components = {
+  //   // Define your components here (Video, CustomImage, etc.)
+  //   // Video,
+  //   // CustomImage,
+  // };
 
   function readTime(inputString: string) {
     // Default values
@@ -29,56 +36,26 @@ export async function getPostByName(
     return totalMinutes;
   }
 
-  let readTimeIs= readTime(rawMDX)
+  let readTimeIs = readTime(rawMDX);
 
-  if (rawMDX === "404: Not Found") return undefined;
+  const result = await marked(content);
+  const mdxSource = await serialize(result, { scope: data });
 
-  const { frontmatter, content } = await compileMDX<{
-    title: string;
-    date: string;
-    tags: string[];
-    image: string;
-    link: string;
-    description: string;
-  }>({
-    source: rawMDX,
-    components: {
-      Video,
-      CustomImage,
-    },
-    options: {
-      parseFrontmatter: true,
-      mdxOptions: {
-        rehypePlugins: [
-          rehypeHighlight,
-          rehypeSlug,
-          [
-            rehypeAutolinkHeadings,
-            {
-              behavior: "wrap",
-            },
-          ],
-        ],
-      },
-    },
-  });
-
-  const id = fileName.replace(/\.mdx$/, "");
 
   const blogPostObj: BlogPost = {
     meta: {
-      id,
-      title: frontmatter.title,
-      date: frontmatter.date,
-      tags: frontmatter.tags,
-      image: frontmatter.image,
-      link: frontmatter.link,
-      description: frontmatter.description,
-      // modified: frontmatter.modified,
-      readTime:readTimeIs
+      id: fileName.replace(/\.mdx$/, ""),
+      title: data.title,
+      date: data.date,
+      tags: data.tags,
+      image: data.image,
+      link: data.link,
+      description: data.description,
+      readTime: readTimeIs,
     },
-    content,
+    content: mdxSource,
   };
+
   return blogPostObj;
 }
 
@@ -113,7 +90,6 @@ export async function getPostsMeta(): Promise<Meta[] | undefined> {
       );
     }
   });
-
 
   return posts.sort((a, b) => (a.date < b.date ? 1 : -1));
 }
