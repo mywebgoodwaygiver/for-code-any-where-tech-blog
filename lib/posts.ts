@@ -50,6 +50,7 @@ export async function getPostByName(
       link: data.link,
       description: data.description,
       readTime: readTimeIs,
+      modified:data.modified
     },
     content: result,
   };

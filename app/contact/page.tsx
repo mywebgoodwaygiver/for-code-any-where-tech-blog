@@ -60,9 +60,10 @@ const ContactPage = () => {
     }
 
     // Now you can use 'data' without TypeScript errors
+    console.log("response=>>>", response);
     console.log(data);
 
-    if (data.status === 200) {
+    if (response.status === 200 ) {
       setSent(true);
     }
     else{
@@ -227,6 +228,9 @@ setErrWSent(true)
           </div>
         </div>
       </div>
+
+{/* create a div and write "The End" */}
+
 
       <StopPoint style="dark:bg-slate-800" ></StopPoint>
       </div>
