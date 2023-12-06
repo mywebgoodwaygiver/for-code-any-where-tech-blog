@@ -13,7 +13,7 @@ const AfterPage: React.FC = () => {
   return (
     <>
       <section className="bg-white dark:bg-gray-900 dark:text-white">
-        <div className="maincontainerAfterPage grid grid-cols-2 dark:bg-gray-900 dark:text-white gap-3 pb-4 px-4  mx-auto max-w-screen-xl text-center rounded bg-gray-50">
+        <div className="maincontainerAfterPage sm:grid sm:grid-cols-2 dark:bg-gray-900 dark:text-white sm:gap-3 pb-4 px-4  mx-auto max-w-screen-xl text-center rounded bg-gray-50 flex flex-col">
           <div
             style={{ borderColor: "wheat" }}
             className="latestContainer    border-4   pl-0.5"

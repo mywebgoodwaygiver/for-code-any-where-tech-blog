@@ -1,5 +1,5 @@
 import matter from "gray-matter";
-import {marked} from "marked"
+import { marked } from "marked";
 // import { bundleMDX } from "mdx-bundler";
 // import fs from 'node:fs/promises';
 // import { ReactElement } from 'react';
@@ -9,17 +9,16 @@ type Filetree = {
   files: String[];
 };
 
-
 export async function getPostByName(
-  fileName: string
+  fileName: string,
 ): Promise<BlogPost | undefined> {
   const res = await fetch(
-    `https://mykv-tutorial.goodwaygiver1.workers.dev/files/${fileName}`
+    `https://mykv-tutorial.goodwaygiver1.workers.dev/files/${fileName}`,
   );
   const rawMDX = await res.text();
 
   const { data, content } = matter(rawMDX);
-  console.log("data=>>>>>>>>>>>>>", data)
+  console.log("data=>>>>>>>>>>>>>", data);
   // const components = {
   //   // Define your components here (Video, CustomImage, etc.)
   //   // Video,
@@ -39,7 +38,6 @@ export async function getPostByName(
 
   const result = await marked(content);
 
-
   const blogPostObj: BlogPost = {
     meta: {
       id: fileName.replace(/\.mdx$/, ""),
@@ -50,19 +48,18 @@ export async function getPostByName(
       link: data.link,
       description: data.description,
       readTime: readTimeIs,
-      modified:data.modified
+      modified: data.modified,
     },
     content: result,
   };
-console.log("blogPostObj=>>>", blogPostObj)
+  // console.log("blogPostObj=>>>", blogPostObj)
 
   return blogPostObj;
 }
 
-
 export async function getPostsMeta(): Promise<Meta[] | undefined> {
   const res = await fetch(
-    "https://mykv-tutorial.goodwaygiver1.workers.dev/allFilesList"
+    "https://mykv-tutorial.goodwaygiver1.workers.dev/allFilesList",
   );
 
   // console.log("res=>>>>>", res);
@@ -87,12 +84,12 @@ export async function getPostsMeta(): Promise<Meta[] | undefined> {
       console.log(error);
       console.log(
         "hey bro here getting err bhai ji  and filename is =>>>>>",
-        file
+        file,
       );
     }
   });
-const finalReturn = posts.sort((a, b) => (a.date < b.date ? 1 : -1));
+  const finalReturn = posts.sort((a, b) => (a.date < b.date ? 1 : -1));
 
-// console.log("finalReturn=>>>>>>>>>", finalReturn)
-  return finalReturn
+  // console.log("finalReturn=>>>>>>>>>", finalReturn)
+  return finalReturn;
 }
