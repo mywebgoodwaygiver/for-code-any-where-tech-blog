@@ -6,7 +6,7 @@ type Meta = {
     image: string,
     link: string,
     description:string,
-    // modified:string,
+    modified:string,
     readTime:number, 
     modified?:string
 }
