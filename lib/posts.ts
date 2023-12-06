@@ -52,11 +52,8 @@ export async function getPostByName(
     },
     content: result,
   };
-<<<<<<< HEAD
-  console.log("blogPostObj=>>>", blogPostObj);
-=======
+
   // console.log("blogPostObj=>>>", blogPostObj)
->>>>>>> draft/modern-leaf
 
   return blogPostObj;
 }
