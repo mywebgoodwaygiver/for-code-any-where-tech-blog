@@ -9,7 +9,7 @@ export default function Home() {
     <div className="mx-auto">
       <HomePage></HomePage>
 
-
+{/* if you are seeing this so something changes */}
       {/* <Posts /> */}
     </div>
   );
