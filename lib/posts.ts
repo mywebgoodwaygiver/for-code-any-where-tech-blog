@@ -16,7 +16,9 @@ export async function getPostByName(
     `https://mykv-tutorial.goodwaygiver1.workers.dev/files/${fileName}`,
   );
   const rawMDX = await res.text();
-
+if(fileName==="how-to-install-termux.mdx"){
+console.log("rawMDX=>>>>>", rawMDX)
+}
   const { data, content } = matter(rawMDX);
   console.log("data=>>>>>>>>>>>>>", data);
   // const components = {

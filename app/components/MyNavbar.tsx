@@ -28,6 +28,7 @@ import { FaSearch } from "react-icons/fa";
 
 interface Props {}
 
+
 function MyNavbar(props: Props) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
