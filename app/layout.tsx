@@ -4,8 +4,6 @@ import MyNavbar from "./components/MyNavbar";
 import Footer from "./components/Footer";
 import NextTopLoader from "nextjs-toploader";
 import { Metadata } from "next/types";
-import Head from "next/head";
-
 export const metadata: Metadata = {
   title: {
     template: "%s | Good Way Giver",
@@ -85,9 +83,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <Head>
-        <link rel="preload" href="./globals.css" as="style" />
-      </Head>
+     
       <body className="dark:bg-slate-800">
         <ContextProvider>
           <MyNavbar />

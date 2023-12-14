@@ -35,7 +35,7 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "build/types/**/*.ts"
-, "app/firebase.js"  ],
+, "app/firebase.js", "app/mongodb/db.js"  ],
   "exclude": [
     "node_modules"
   ]

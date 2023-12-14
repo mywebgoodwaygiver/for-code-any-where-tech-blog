@@ -41,7 +41,6 @@ console.log("rawMDX=>>>>>", rawMDX)
       image: data.image,
       link: data.link,
       description: data.description,
-      readTime: readTimeIs,
       modified: data.modified,
     },
     content: result,
