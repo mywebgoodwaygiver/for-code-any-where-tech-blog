@@ -1,8 +1,5 @@
 import matter from "gray-matter";
 import { marked } from "marked";
-// import { bundleMDX } from "mdx-bundler";
-// import fs from 'node:fs/promises';
-// import { ReactElement } from 'react';
 
 // Import your components (Video, CustomImage, etc.) here
 type Filetree = {
@@ -21,11 +18,6 @@ console.log("rawMDX=>>>>>", rawMDX)
 }
   const { data, content } = matter(rawMDX);
   console.log("data=>>>>>>>>>>>>>", data);
-  // const components = {
-  //   // Define your components here (Video, CustomImage, etc.)
-  //   // Video,
-  //   // CustomImage,
-  // };
 
   function readTime(inputString: string) {
     // Default values
