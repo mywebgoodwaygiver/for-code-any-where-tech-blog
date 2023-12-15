@@ -47,6 +47,11 @@ export const sendEmail = async (body: any) => {
   });
 };
 
-
+export const getPostsMeta =  async ()=>{
+  return await commonrequest({
+    method: 'GET',
+    url: `http://localhost:6010/post/getPostsMeta`,
+  });
+}
 
 

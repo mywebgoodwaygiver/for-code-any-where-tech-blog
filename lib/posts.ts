@@ -52,19 +52,8 @@ console.log("rawMDX=>>>>>", rawMDX)
 }
 
 export async function getPostsMeta(): Promise<Meta[] | undefined> {
-  const res = await fetch(
-    "https://mykv-tutorial.goodwaygiver1.workers.dev/allFilesList",
-  );
 
-  // console.log("res=>>>>>", res);
-  if (!res.ok) return undefined;
-
-  const repoFiletree: Filetree = await res.json();
-
-  const filesArray = repoFiletree.files
-    .map((filename) => filename)
-    .filter((path) => path.endsWith(".mdx"));
-  console.log("filesArray=>>>>>>", filesArray);
+  const filesArray = ["how-to-install-vs-code-on-android.mdx","how-to-install-termux.mdx"]
   const posts: Meta[] = [];
 
   filesArray.map(async (file: any) => {

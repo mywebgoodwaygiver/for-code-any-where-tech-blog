@@ -4,9 +4,10 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import Related from "@/app/components/Related";
 import AfterPage from "@/app/components/AfterPage";
+import { connectToDatabase } from "@/lib/db"
 import "../../CSS/ConstantCSS";
 export const revalidate = 86400;
-
+connectToDatabase()
 type Props = {
   params: {
     postId: string;

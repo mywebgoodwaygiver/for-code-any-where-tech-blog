@@ -29,13 +29,14 @@
       ]
     }
   },
+
   "include": [
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
     "build/types/**/*.ts"
-, "app/firebase.js", "app/mongodb/db.js"  ],
+, "app/firebase.js", "app/mongodb/db.js", "app/apiCalls/getData.js"  ],
   "exclude": [
     "node_modules"
   ]

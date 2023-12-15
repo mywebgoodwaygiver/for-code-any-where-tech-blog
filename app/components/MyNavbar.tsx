@@ -17,6 +17,7 @@ import {
   typingInput,
   latestPost,
   popularPost,
+  postsMetaContext,
 } from "./context/ContextProvider";
 import {
   getLatestPostFunc,
@@ -25,7 +26,7 @@ import {
 } from "../apiCalls/Apis";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import { FaSearch } from "react-icons/fa";
-
+import { getPostsMeta } from "@/lib/posts";
 interface Props {}
 
 
@@ -185,6 +186,40 @@ function MyNavbar(props: Props) {
     focusInput();
   }, []);
   console.log("urlNow ", urlNow);
+
+
+// #getDataBehindTheLibFile
+
+
+const { postsMeta, setPostsMeta } = useContext(postsMetaContext);
+const runThisFuncForPostsMeta = async () => {
+  const response = await getPostsMeta();
+  if(response){
+    alert(response)
+  }
+  
+  let data: any = []; // Initialize data with an empty array
+
+  if (typeof response === "string") {
+    // Handle the case where there is an error (response is a string)
+    console.error("Error:", response);
+  } else {
+    // Handle the case where the request was successful (response is an AxiosResponse)
+    data = response;
+  }
+
+  // Now you can use 'data' without TypeScript errors
+  console.log("PostsMetaData =>>>>>>⚠⚠⚠⚠⚠⚠⚠⚠", data);
+  setPostsMeta(data);
+};
+
+useEffect(() => {
+  runThisFuncForPostsMeta();
+}, []);
+
+
+
+
   return (
     <>
       <div className="mb-[3rem]">
@@ -475,6 +510,15 @@ function MyNavbar(props: Props) {
           </div>
         )}
       </div>
+      {postsMeta && postsMeta.map((item)=>{
+ return(
+  <>
+  <p>{item.title}</p>
+  <p>{item.link}</p>
+  </>
+ )
+
+      })}
     </>
   );
 }

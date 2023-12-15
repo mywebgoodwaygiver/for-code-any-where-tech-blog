@@ -3,11 +3,8 @@
 import React from "react";
 import StopPoint from "../ContantComponents/StopPoint";
 import Image from 'next/image';
-import { getPostsMeta2 } from "../apiCalls/getData";
+import mongoose from "mongoose";
 const AboutPage = () => {
-
- console.log(getPostsMeta2())
- alert(getPostsMeta2())
 
   return (
     <>

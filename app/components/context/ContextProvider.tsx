@@ -11,6 +11,10 @@ interface LatestPostData {
   latestPostData: any[];
   setLatestPostData: (latestPostData: any[]) => void;
 }
+interface AllPostsMeta {
+  postsMeta: any[];
+  setPostsMeta: (postsMeta: any[]) => void;
+}
 
 interface PopularPostData {
   popularPostData: any[];
@@ -71,6 +75,10 @@ export const latestPost = createContext<LatestPostData>({
   latestPostData: [],
   setLatestPostData: () => {},
 });
+export const postsMetaContext = createContext<AllPostsMeta>({
+  postsMeta: [],
+  setPostsMeta: () => {},
+});
 
 export const popularPost = createContext<PopularPostData>({
   popularPostData: [],
@@ -127,6 +135,7 @@ interface MyComponentProps {
 const ContextProvider = ({ children }: MyComponentProps) => {
   const [postData, setPostData] = useState<any[]>([]);
   const [latestPostData, setLatestPostData] = useState<any[]>([]);
+  const [postsMeta, setPostsMeta] = useState<any[]>([]);
   const [popularPostData, setPopularPostData] = useState<any[]>([]);
   const [page, setPage] = useState<number>(1);
   const [showSpin, setShowSpin] = useState<boolean | null>(null);
@@ -140,6 +149,7 @@ const ContextProvider = ({ children }: MyComponentProps) => {
   return (
     <postdata.Provider value={{ postData, setPostData }}>
       <latestPost.Provider value={{ latestPostData, setLatestPostData }}>
+      <postsMetaContext.Provider value={{ postsMeta, setPostsMeta }}>
         <popularPost.Provider
           value={{ popularPostData, setPopularPostData }}
         >
@@ -163,6 +173,7 @@ const ContextProvider = ({ children }: MyComponentProps) => {
             </showSpiner.Provider>
           </myPage.Provider>
         </popularPost.Provider>
+      </postsMetaContext.Provider>
       </latestPost.Provider>
     </postdata.Provider>
   );
